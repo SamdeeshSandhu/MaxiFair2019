@@ -1,3 +1,4 @@
+//MaxiFair 2019
 /* Sample ajax query that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
 	  $.ajax({
