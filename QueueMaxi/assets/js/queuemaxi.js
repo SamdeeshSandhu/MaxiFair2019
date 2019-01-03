@@ -181,7 +181,7 @@ function initializeFields(){
                     return response.json();
                     }).then(function(JSONdata) {
                     document.getElementById("tentb").innerHTML = JSONdata.data.length;
-                    //console.log(JSONdata);
+                    //console.log("hello");
                     }).catch(function() {
                     document.getElementById("tentb").innerHTML = "Error";
                     console.log("ERROR");
