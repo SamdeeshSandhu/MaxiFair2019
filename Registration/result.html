@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MAXI</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+	<script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/maxientry.js"></script>
+
+	
+</head>
+<body>
+    <div class="container">
+	<div class="row">
+	<div class="col-sm-12 col-md-3">
+	  	  <img src="assets/css/logo.jpg" alt="logo" style="width:130px;height:100px;">
+		  </div>
+		  <div class="col-sm-12 col-md-3">
+		  <button type="button" onclick = "window.location.href='Search.html'" class="btn btn-primary btn-lg"> Search </button>
+		   </div>
+		  <div class="col-sm-12 col-md-3">
+		  <button type="button" onclick = "window.location.href='EntryForm.html'" class="btn btn-primary btn-lg">New User </button>
+          </div>		 
+		 <div class="col-sm-12 col-md-3">
+		  <button type="button" onclick = "window.location.href='EntryForm.html'" class="btn btn-primary btn-lg"> Refresh </button>
+		  </div>
+		  </div>
+		  
+		  <h2>Details</h2>
+	
+    <main>
+
+<Script>
+	var ip="10.10.20.89:80";
+var arrArgs = location.search.substring(1).split("&");
+
+var index = arrArgs[0].indexOf("=");  // Gets the first index where a space occours
+var id = arrArgs[0].substr(0, index); // Gets the first part
+var text1 = arrArgs[0].substr(index + 1);  // Gets the text part
+
+var index = arrArgs[1].indexOf("=");  // Gets the first index where a space occours
+var id = arrArgs[1].substr(0, index); // Gets the first part
+var text2 = arrArgs[1].substr(index + 1);  // Gets the text part
+
+var url = "http://"+ip+"/api.php?action=viewregistrations&filter=[[\"name\",\""+text1+"\"],[\"phno\",\""+text2+"\"]]";
+    console.log(url);
+		fetch(url).then(function(response){
+			return response.json();
+		}).then(function(JSONdata){
+			console.log(JSON.stringify(JSONdata));
+			document.getElementById("Name").innerHTML = "Name: " + JSONdata.data[0].name;
+			document.getElementById("id").innerHTML = "UID: " + JSONdata.data[0].UID;
+			document.getElementById("gamesalc").innerHTML = "Games Allocated: "+ JSONdata.data[0].games_allocated;
+			document.getElementById("ph").innerHTML = "Phone No: "+ JSONdata.data[0].phno;
+			
+		}).catch(function(){
+			console.log("Error "+url);
+		});
+</Script>
+
+      <div style= "vertical-align:middle;  display: block; margin-left: 175px;">	    
+		<h3><span id="Name"></span></h3>
+		<h3><span id="id"></span></h3>
+		<h3><span id="gamesalc"></span></h3>
+		<h3><span id="ph"></span></h3>
+	</div>
+  </main>	  
+</div>	  
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MAXI</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+   
+    <link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+	<script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/maxientry.js"></script>
+	
+</head>
+<body>
+    <div class="container">
+	<div class="row">
+	<div class="col-sm-12 col-md-3">
+	  	  <img src="assets/css/logo.png" alt="logo" style="width:130px;height:100px;">
+		  </div>
+		  <div class="col-sm-12 col-md-3">
+		  <button type="button" onclick = "window.location.href='Search.html'" class="btn btn-primary btn-lg"> Search </button>
+		   </div>
+		  <div class="col-sm-12 col-md-3">
+		  <button type="button" onclick = "window.location.href='EntryForm.html'" class="btn btn-primary btn-lg">New User </button>
+          </div>		 
+		 <div class="col-sm-12 col-md-3">
+		   <h2 style="margin-top:0!important;">New User Registration</h2>
+		  </div>
+		  </div>
+		 
+	
+    <main>
+	
+	    <form <div class="form-group has-success" action = "result.html" method="get">
+      			
+		<div class="row">
+					<div class="col-sm-12 col-md-4">
+						<h3>Name</h3>
+						<input required = "true" name = "name" type="text" id="name" class="form-control" placeholder="Enter Name">
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<h3>Mobile Number</h3>
+						<input required = "true" name = "phno" type="text" id="phn"  class="form-control" placeholder="Enter Mobile Number">
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<h3>Email ID</h3>
+						<input type="text" id="email"  class="form-control" placeholder="Enter Email ID">
+					</div>
+					
+		</div>
+ 
+        <div class="row">
+			<div class="col-sm-12 col-md-4">
+			                 <div class="dropdown">
+                  <h3>Region</h3>
+				 <select required = "true" class="form-control" id = "region">
+				
+				 <option disabled selected value>Choose Area of Residence</option>
+                 <option value = "Aambagaan">Aambagaan</option>
+                 <option value = "Adityapur">Adityapur</option>
+                 <option value = "Agrico">Agrico</option>
+                 <option value = "Azadnagar">Azadnagar</option>
+                 <option value = "Baradwari">Baradwari</option>
+                 <option value = "Baridih">Baridih</option>
+                 <option value = "Bhalubasa">Bhalubasa</option>
+                 <option value = "Birsanagar">Birsanagar</option>
+                 <option value = "Bistupur">Bistupur</option>
+                 <option value = "Dhatkidih">Dhatkidih</option>
+                 <option value = "Gamharia">Gamharia</option>
+                 <option value = "Golmuri">Golmuri</option>
+                 <option value = "Govindpur">Govindpur</option>
+                 <option value = "Jawahar Nagar">Jawahar Nagar</option>
+                 <option value = "Jugsalai">Jugsalai</option>
+                 <option value = "Kadma">Kadma</option>
+                 <option value = "Kailash Nagar">Kailash Nagar</option>
+                 <option value = "Kasidih">Kasidih</option>
+                 <option value = "Mango">Mango</option>
+                 <option value = "Namda Basti">Namda Basti</option>
+                 <option value = "Nildih">Nildih</option>
+                 <option value = "Parsudih">Parsudih</option>
+                 <option value = "Sakchi">Sakchi</option>
+                 <option value = "Sidhgora">Sidhgora</option>
+                 <option value = "Sitaramdera">Sitaramdera</option>
+                 <option value = "Sonari">Sonari</option>
+                 <option value = "Telco">Telco</option>
+
+				 <option value = "Others">Others</option>
+                  </select>
+                 </div>
+			 </div>
+			   <div class="col-sm-12 col-md-4">
+			   <h4><br>If Region is "Others"</h4><input type="text" id="otherstext" class="form-control" placeholder="Please Specify">
+			   </div>
+			
+             <div class="col-sm-12 col-md-4">
+               <h3>Age Range</h3>
+	            <select required = "true" class="form-control" id = "age">
+				
+				<option disabled selected value>Select Age Range</option>
+	            <option value="less than 18">Below 18 years</option>
+	            <option value="18 to 24 years">18-24 years</option>
+	            <option value="25 to 34 years">25-34 years</option>
+	            <option value="35 to 44 years">35-44 years</option>
+	            <option value="45 to 54 years">45-54 years</option>
+	            <option value="55 to 64 years">55-64 years</option>
+	            <option value="65 to 74 years">65-74 years</option>
+	            <option value="greater than 75 years">75 years above</option>
+				</select>
+	         </div>
+        </div>
+
+		
+		
+	<div class="row">
+			<div class="col-sm-12 col-md-3">
+		   <h3>Gender</h3>
+              <div class="radio">
+			   <label>
+               <input type="radio" name="gender" id="male" value="Male" checked>
+               <h4>Male</h4>
+               </label>
+               </div>
+               <div class="radio">
+               <label>
+               <input type="radio" name="gender" id="female" value="Female">
+               <h4>Female</h4>
+               </label>
+               </div>
+		   </div>
+			
+		<div class="col-sm-12 col-md-3">	 
+              <h3>Married?</h3>
+			  <div class="radio">
+               <label>
+               <input type="radio" name = "marital" id="single" value="Married" checked>
+               <h4>Yes</h4> 
+               </label>
+               </div>
+               <div class="radio">
+               <label>
+               <input type="radio" name = "marital" id="married" value="Single">
+               <h4>No</h4>
+               </label>
+               </div>
+			</div>
+			
+		<div class="col-sm-12 col-md-3">	 
+              <h3>Graduate?</h3>
+			  <div class="radio">
+               <label>
+               <input type="radio" name = "education" id="graduate" value="Graduate" checked>
+               <h4>Yes</h4> 
+               </label>
+               </div>
+               <div class="radio">
+               <label width=550px >
+               <input type="radio" name = "education" id="nonGraduate" value="nonGraduate">
+               <h4>No</h4>
+               </label>
+               </div>
+			</div>
+
+			
+	    <div class="col-sm-12 col-md-3">
+				<h3>Games Allocated:</h3>				
+			<div>
+             <label type="text" id="gameAllocatedLabel">N/A</label>
+            </div>
+			</div>	
+	    </div>
+        <table style="width:100%">
+            <tr>	
+  	        <th><label class="checkbox-inline"><input type="checkbox"  id="CanDrive"><h4>Can drive a bike?</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="AccompaniedChild"><h4>Accompanied by child between 5-15 years?  </h4></label></th>
+            </tr>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="ReadHindiNP"><h4>Reads Hindi newspaper?</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="internet"><h4>Uses internet on smartphone or computer?</h4></label></th>
+         </tr>
+     </h3></th>
+   </table>
+	<table>
+     <thead>
+	 <th>
+	 <table class = "table table-bordered">
+      <tr>
+	  <h3 style="margin-bottom:0!important;">Items</h3>
+            <th><label class="checkbox-inline"><input type="checkbox" id="ElectricityConnection" checked><h4>Electricity</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox" id="CeilingFan" checked><h4>Ceiling Fan</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox" id="LPGStove" checked><h4>LPG Stove</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox" id="TwoWheeler" checked><h4>Two Wheeler</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="ColorTV" checked><h4>Color TV</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox"  id="Refrigerator" checked><h4>Refrigerator</h4></label></th>
+          	</tr>
+       <tr>
+			      <th><label class="checkbox-inline"><input type="checkbox"  id="WashingMachine" checked><h4>Washing Machine</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox"  id="PCLaptop" checked><h4>PC Laptop</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="FourWheeler" checked><h4>Four Wheeler</h4></label></th>
+           	<th><label class="checkbox-inline"><input type="checkbox"  id="AC" checked><h4>AC</h4></label></th>
+           	<th><label class="checkbox-inline"><input type="checkbox"  id="AgriculturalLand" checked><h4>Agricultural Land</h4></label></th>
+	       </tr>
+     </th>
+     </table>
+     
+    <th>
+    <div class="col-sm-12 col-md-2">
+		 
+		 <input type="button" value = "GetGame" class="btn btn-primary btn-lg" onclick="getGame()">
+		 
+    </div>
+    
+	</th>
+	<th>
+    <div class="col-sm-12 col-md-2">
+		 
+		 <input type="submit" id="Submit" value = "Submit" class="btn btn-primary btn-lg" onclick="insert()">
+		 
+    </div>
+	</th>
+</table>	
+    </form>		
+  </main>	  
+</div>	  
+</body>
+</html>
+
+

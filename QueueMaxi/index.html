@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="100"/>
+    <title>Queue Maxi</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+    <link rel="stylesheet" href="assets/css/user.css?version=15">
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/queuemaxi.js"></script>  
+</head>
+
+<body>
+    <nav class="navbar navbar-default custom-header">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <!--button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button--><a class="navbar-brand navbar-link" href="#"><span id="maxi">MaxiFair QueingSystem</span></a></div>
+            <div class="collapse navbar-collapse" id="navbar-collapse"></div>
+        </div>
+    </nav>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Tent Number</th>
+                    <th>Total Respondents</th>
+                    <th>Queue Length</th>
+                    <th id="upcoming">Upcoming UIDs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tent #A</td>
+                    <td id="tentatotal"></td>
+                    <td id="tenta"></td>
+                    <td id="tentauid"></td>
+                </tr>
+                <tr>
+                    <td>Tent #B</td>
+                    <td id="tentbtotal"></td>
+                    <td id="tentb"></td>
+                    <td id="tentbuid"></td>
+                </tr>
+                <tr>
+                    <td>Tent #C</td>
+                    <td id="tentctotal"></td>
+                    <td id="tentc"></td>
+                    <td id="tentcuid"></td>
+                </tr>
+                <tr>
+                    <td>Tent #D</td>
+                    <td id="tentdtotal"></td>
+                    <td id="tentd"></td>
+                    <td id="tentduid"></td>
+                </tr>
+                <tr>
+                    <td>Tent #E</td>
+                    <td id="tentetotal"></td>
+                    <td id="tente"></td>
+                    <td id="tenteuid"></td>
+                </tr>
+                 <tr>
+                    <td>Tent #F</td>
+                    <td id="tentftotal"></td>
+                    <td id="tentf"></td>
+                    <td id="tentfuid"></td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+    <aside>
+        <div class="container" id="GameDetails"><h3>Games Played:<h3></div>
+        <div class="container"><span>UID </span>
+            <input type="number" id="uid">
+        </div>
+        <br>
+        <form>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="A">A
+            </label>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="B">B
+            </label>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="C">C
+            </label>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="D">D
+            </label>
+            <br>
+            <br>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="E">E
+            </label>
+            <label class="checkbox-inline">
+                <input class="game" type="checkbox" value="F">F
+            </label>
+        </form>
+
+             <div>
+                <button class="" type="button" id="Remove" onclick="remove()">Remove</button>
+            </div>
+             <div>
+                <span id="output"></span>
+            </div>
+        </div>
+    </aside>
+    <aside>
+        <div class="container" id="GameDetails"><h3>Manage Queue:<h3></div>
+        <div class="container"><span>UID </span>
+            <input type="number" id="uidB">
+        </div>
+        <button class="" type="button" id="AddParticipant" onclick="addParticipant()">Add Participant</button>
+        <span>
+        <button class="" type="button" id="Archive" onclick="archive()">Archive</button>
+        <button class="" type="button" id="Unarchive" onclick="unarchive()">Unarchive</button>
+        </span>
+    </aside>
+    <script type="text/javascript"> window.onload = onloadFunctions()</script>
+    <!--script src="assets/js/queuemaxi.js?version=4"></script-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

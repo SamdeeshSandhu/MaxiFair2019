@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>ChangeConditions</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+      <script src="assets/js/jquery.min.js"></script>
+      <script src="assets/js/maxientry.js"></script>
+   </head>
+   <body>
+      <div class="container">
+      <div class="row">
+         <div class="col-sm-12 col-md-3">
+            <img src="assets/css/logo.png" alt="logo" style="width:230px;height:150px;">
+         </div>
+         <hr>
+         <hr>
+         <div class="col-sm-12 col-md-3"><h3>Game</h3>
+            <input type="text" id="game">
+         </div>
+         <hr>
+         <hr>
+         <div class="col-sm-12 col-md-3">
+            <h2 style="margin-top:0!important;">Change RP Conditions</h2>
+         </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-3">
+        </div>
+      </div>
+      <br>
+      <br>
+      <main>
+         <div class="row">
+         <div class="col-sm-12 col-md-3">
+            <div class="container" id="sec">
+               <h3>SEC</h3>
+               <form>
+                  <label class="checkbox-inline">
+                  <h4><input class="sec" type="checkbox" value="1">A</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="sec" type="checkbox" value="2">B</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="sec" type="checkbox" value="3">C</h4>
+                  </label>
+               </form>
+            </div>
+         </div>
+         <div class="col-sm-12 col-md-4">
+            <div class="container" id="AgeRange">
+               <h3>Age Range</h3>
+               <form>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="1">Below 18 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="2">18-24 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="3">25-34 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="4">35-44 years</h4>
+                  </label>
+                  <br>
+                  <br>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="5">45-54 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="6">55-64 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="7">65-74 years</h4>
+                  </label>
+                  <label class="checkbox-inline">
+                  <h4><input class="AgeRange" type="checkbox" value="8">75 years above</h4>
+                  </label>
+               </form>
+            </div>
+         </div>
+         </div>
+         <table style="width:100%">
+            <tr>  
+           <th><label class="checkbox-inline"><input type="checkbox"  id="CanDrive" value="1" checked><h4>Can drive a bike?</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="AccompaniedChild" value="1" checked><h4>Accompanied by child between 5-15 years?  </h4></label></th>
+            </tr>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="ReadsHindiNP" value="1" checked><h4>Reads Hindi newspaper?</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="internet" value="1" checked><h4>Uses internet on smartphone or computer?</h4></label></th>
+         </tr>
+     </h3></th>
+   </table>
+         <br>
+      <br>
+         <div class="row">
+            <div class="col-sm-12 col-md-3">
+               <h3>Gender</h3>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="gender" id="male" value="10" checked>
+                     <h4>Male</h4>
+                  </label>
+               </div>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="gender" id="female" value="01">
+                     <h4>Female</h4>
+                  </label>
+               </div>
+               <div class="radio">
+                  <label>
+                     <input type="radio" name="gender" id="both" value="11">
+                     <h4>Both</h4>
+                  </label>
+               </div>
+            </div>
+               <div class="col-sm-12 col-md-3">
+                <h3>Marital Status</h3>
+                  <div class="radio">
+                     <label>
+                        <input type="radio" name = "marital" id="single" value="10">
+                        <h4>Single</h4>
+                     </label>
+                  </div>
+                  <div class="radio">
+                     <label>
+                        <input type="radio" name = "marital" id="married" value="01">
+                        <h4>Married</h4>
+                     </label>
+                  </div>
+                  <div class="radio">
+                     <label>
+                        <input type="radio" name = "marital" id="both" value="11">
+                        <h4>Both</h4>
+                     </label>
+                  </div>
+               </div>
+            <div class="col-sm-12 col-md-3">
+               <h3>Education</h3>
+               <select required = "true" class="form-control" id = "education">
+                  <option disabled selected value>Select Education</option>
+                  <option value="10">Graduate</option>
+                  <option value="01">Non Graduate</option>
+                  <option value="11">both</option>
+               </select>
+				<h3>Time</h3>
+            <input type="text" id="time">
+            </div>
+            </th>
+
+            <th>
+              <div class="row">
+              <div class="col-sm-12 col-md-3">
+               <div style= "vertical-align:middle;  display: block; margin-left: 75px;">
+                  <h1><input type="submit" value = "Submit" class="btn btn-primary btn-lg" onclick="changeCondition()"></h1>
+               </div>
+             </div>
+           </div>>
+            </th>
+            </table>  
+            </form>   
+      </main>
+      </div>    
+   </body>
+</html>
+
