@@ -238,10 +238,12 @@ function initializeFields(){
                     }).then(function(JSONdata) {
                     var UIDs="";
                     for(var i=0;i<JSONdata.data.length;i++){
-                        //console.log("played"+JSONdata.data[i].played)
+                        console.log("played"+JSONdata.data[i].played)
+						//alert("played"+JSONdata.data[i].played);
                         if(JSONdata.data[i].played==0){
                             UIDs=UIDs + JSONdata.data[i].UID + ", ";
-                            //console.log("uid"+UIDs);
+                            console.log("uid"+UIDs);
+							//alert("uid"+UIDs);
                         }
                     }
                     document.getElementById("tentauid").innerHTML = UIDs;
