@@ -102,6 +102,22 @@ function addParticipant(){
             });
 		}
 	});
+	$.ajax({
+		url: url,
+		error: function(xhr, status, error){
+			console.log("action=viewuid2= Failed with status " + status);
+		},
+		success: function(data2){
+			var JSONdata = JSON.parse(data2);
+			//code if call is successfull
+            var gameA = JSONdata.data2[0].time;
+            var gameB = JSONdata.data2[1].time;
+            var gameC = JSONdata.data2[2].time;
+            var gameD = JSONdata.data2[3].time;
+            var gameE = JSONdata.data2[4].time;
+            var gameF = JSONdata.data2[5].time; 
+		}
+	});
 
 }
 
