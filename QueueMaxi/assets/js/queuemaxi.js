@@ -102,6 +102,24 @@ function addParticipant(){
             });
 		}
 	});
+	
+		$.ajax({
+		url: json_decode(viewdb(getdbconnection(),"dynamicrp",null,null));,
+		error: function(xhr, status, error){
+			console.log("action=viewuid2= Failed with status " + status);
+		},
+		success: function(data2){
+			var JSONdata = JSON.parse(data2);
+			//code if call is successfull
+            var time_gameA = JSONdata.data2[0].time;
+            var time_gameB = JSONdata.data2[1].time;
+            var time_gameC = JSONdata.data2[2].time;
+            var time_gameD = JSONdata.data2[3].time;
+            var time_gameE = JSONdata.data2[4].time;
+            var time_gameF = JSONdata.data2[5].time;
+			alert(time_gameA);		
+		}
+	});
 
 }
 
