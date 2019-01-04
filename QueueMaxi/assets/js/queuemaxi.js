@@ -1,4 +1,3 @@
-//MaxiFair 2019
 /* Sample ajax query that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
 	  $.ajax({
@@ -12,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.20.89"
+var ip="10.10.32.123"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -181,7 +180,7 @@ function initializeFields(){
                     return response.json();
                     }).then(function(JSONdata) {
                     document.getElementById("tentb").innerHTML = JSONdata.data.length;
-                    //console.log("hello");
+                    //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentb").innerHTML = "Error";
                     console.log("ERROR");
