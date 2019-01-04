@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.20.89"
+var ip="10.10.21.178"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -59,6 +59,7 @@ var uid = document.getElementById("uid").value;
 function addParticipant(){
     var uid = document.getElementById("uidB").value;
     var url = "http://"+ip+"/api.php?action=viewuid1&uid="+uid;
+	var url2 = "http://"+ip+"/api.php?action=viewuid2";
     $.ajax({
 		url: url,
 		error: function(xhr, status, error){
@@ -102,24 +103,28 @@ function addParticipant(){
             });
 		}
 	});
-	
-		$.ajax({
-		url: json_decode(viewdb(getdbconnection(),"dynamicrp",null,null));,
-		error: function(xhr, status, error){
-			console.log("action=viewuid2= Failed with status " + status);
-		},
-		success: function(data2){
-			var JSONdata = JSON.parse(data2);
-			//code if call is successfull
-            var time_gameA = JSONdata.data2[0].time;
-            var time_gameB = JSONdata.data2[1].time;
-            var time_gameC = JSONdata.data2[2].time;
-            var time_gameD = JSONdata.data2[3].time;
-            var time_gameE = JSONdata.data2[4].time;
-            var time_gameF = JSONdata.data2[5].time;
+	$conn = mysql_connect('localhost', 'root', '');
+	mysql_select_db('maxi');
+	$sql = 'SELECT time FROM dynamicrp';
+	$retval = mysql_query( $sql, $conn );
+	$row = mysql_fetch_array($retval)
+      var time_gameA =$row['time'];
+	$row = mysql_fetch_array($retval)
+	  var time_gameB = $row['time'];
+	$row = mysql_fetch_array($retval)
+      var time_gameC = $row['time'];
+	$row = mysql_fetch_array($retval)
+      var time_gameD = $row['time'];
+	$row = mysql_fetch_array($retval)
+      var time_gameE = $row['time'];
+	$row = mysql_fetch_array($retval)
+      var time_gameF = $row['time'];            
 			alert(time_gameA);		
 		}
 	});
+
+
+
 
 }
 
@@ -256,12 +261,10 @@ function initializeFields(){
                     }).then(function(JSONdata) {
                     var UIDs="";
                     for(var i=0;i<JSONdata.data.length;i++){
-                        console.log("played"+JSONdata.data[i].played)
-						//alert("played"+JSONdata.data[i].played);
+                        //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
                             UIDs=UIDs + JSONdata.data[i].UID + ", ";
-                            console.log("uid"+UIDs);
-							//alert("uid"+UIDs);
+                            //console.log("uid"+UIDs);
                         }
                     }
                     document.getElementById("tentauid").innerHTML = UIDs;
