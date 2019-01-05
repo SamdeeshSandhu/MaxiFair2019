@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.21.178"
+var ip="10.10.20.89"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -103,29 +103,6 @@ function addParticipant(){
             });
 		}
 	});
-	$conn = mysql_connect('localhost', 'root', '');
-	mysql_select_db('maxi');
-	$sql = 'SELECT time FROM dynamicrp';
-	$retval = mysql_query( $sql, $conn );
-	$row = mysql_fetch_array($retval)
-      var time_gameA =$row['time'];
-	$row = mysql_fetch_array($retval)
-	  var time_gameB = $row['time'];
-	$row = mysql_fetch_array($retval)
-      var time_gameC = $row['time'];
-	$row = mysql_fetch_array($retval)
-      var time_gameD = $row['time'];
-	$row = mysql_fetch_array($retval)
-      var time_gameE = $row['time'];
-	$row = mysql_fetch_array($retval)
-      var time_gameF = $row['time'];            
-			alert(time_gameA);		
-		}
-	});
-
-
-
-
 }
 
 function unarchive(){
@@ -187,12 +164,21 @@ function getQueueLength(tentNum){
 }
 
 function initializeFields(){
+	// average time for games
+	var timea = 10;
+	var timeb = 10;
+	var timec = 10;
+	var timed = 10;
+	var timee = 10;
+	var timef = 10;
+	
     var url = "http://"+ip+"/api.php?action=gamequeue&game=a";
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tenta").innerHTML = JSONdata.data.length;
-                    //console.log(JSONdata);
+                    document.getElementById("tenta").innerHTML = JSONdata.data.length*timea
+					console.log("tenta");
+                    console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tenta").innerHTML = "Error";
                     console.log("ERROR");
@@ -202,9 +188,9 @@ function initializeFields(){
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tentb").innerHTML = JSONdata.data.length;
-                    //console.log(JSONdata);
-                    }).catch(function() {
+                    document.getElementById("tentb").innerHTML = JSONdata.data.length*timeb;
+					console.log("tentb");
+                    console.log(JSONdata);                    }).catch(function() {
                     document.getElementById("tentb").innerHTML = "Error";
                     console.log("ERROR");
                     });
@@ -213,9 +199,9 @@ function initializeFields(){
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tentc").innerHTML = JSONdata.data.length;
-                    //console.log(JSONdata);
-                    }).catch(function() {
+                    document.getElementById("tentc").innerHTML = JSONdata.data.length*timec;
+					console.log("tentc");
+                    console.log(JSONdata);                    }).catch(function() {
                     document.getElementById("tentc").innerHTML = "Error";
                     console.log("ERROR");
                     });
@@ -224,7 +210,7 @@ function initializeFields(){
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tentd").innerHTML = JSONdata.data.length;
+                    document.getElementById("tentd").innerHTML = JSONdata.data.length*timed;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentd").innerHTML = "Error";
@@ -235,7 +221,7 @@ function initializeFields(){
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tente").innerHTML = JSONdata.data.length;
+                    document.getElementById("tente").innerHTML = JSONdata.data.length*timee;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tente").innerHTML = "Error";
@@ -246,7 +232,7 @@ function initializeFields(){
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tentf").innerHTML = JSONdata.data.length;
+                    document.getElementById("tentf").innerHTML = JSONdata.data.length*timef;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentf").innerHTML = "Error";
