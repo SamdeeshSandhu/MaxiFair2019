@@ -84,7 +84,8 @@ function addParticipant(){
                     console.log("action=addparticipant&uid= Failed with status " + status);
                 },
                 success: function(data){
-                    
+                    console.log("data");
+                    console.log(data);
                     console.log(data.slice(-1));
                     if(data.slice(-1)=="a") {
                         window.alert("Press the Unarchive Button !!!!");
@@ -93,9 +94,13 @@ function addParticipant(){
                         gameAlt = gameAlt.toLowerCase();
                         var queueLength = [];
                         for (var i = 0, len = gameAlt.length; i < len; i++) {
-                            queueLength.push(document.getElementById("tent"+gameAlt.charAt(i)).innerHTML);
+                            queueLength.push(Number(document.getElementById("tent"+gameAlt.charAt(i)).innerHTML));
                         }
+						console.log("queueLength");
+						console.log(queueLength);
                         var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
+						console.log("index");
+						console.log(index);
                         window.alert(" First game: "+(gameAlt.charAt(index)).toUpperCase());
                     }
                     window.location.reload();
@@ -167,7 +172,7 @@ function initializeFields(){
 	// average time for games
 	var timea = 10;
 	var timeb = 10;
-	var timec = 10;
+	var timec = 100;
 	var timed = 10;
 	var timee = 10;
 	var timef = 10;
