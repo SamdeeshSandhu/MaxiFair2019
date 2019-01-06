@@ -171,18 +171,48 @@ function getQueueLength(tentNum){
 function initializeFields(){
 	// average time for games
 	
-	var timea="http://"+ip+"/api.php?action=gametime&game=a";
-	fetch(timea,{mode: 'cors'});
-	var timeb="http://"+ip+"/api.php?action=gametime&game=b";
-	fetch(timeb,{mode: 'cors'});
-	var timec="http://"+ip+"/api.php?action=gametime&game=c";
-	fetch(timec,{mode: 'cors'});
-	var timed="http://"+ip+"/api.php?action=gametime&game=d";
-	fetch(timed,{mode: 'cors'});
-	var timee="http://"+ip+"/api.php?action=gametime&game=e";
-	fetch(timee,{mode: 'cors'});
-	var timef="http://"+ip+"/api.php?action=gametime&game=f";
-	fetch(timef,{mode: 'cors'});
+	var url="http://"+ip+"/api.php?action=gametime&game=a";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timea = JSONdata.data;
+					});
+
+	var url="http://"+ip+"/api.php?action=gametime&game=b";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timeb = JSONdata.data;
+					});
+					
+	var url="http://"+ip+"/api.php?action=gametime&game=c";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timec = JSONdata.data;
+					});
+					
+	var url="http://"+ip+"/api.php?action=gametime&game=d";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timed = JSONdata.data;
+					});
+					
+	var url="http://"+ip+"/api.php?action=gametime&game=e";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timee = JSONdata.data;
+					});
+					
+	var url="http://"+ip+"/api.php?action=gametime&game=f";
+	fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+					timef = JSONdata.data;
+					});
+					
 	/*var timea = 10;
 	var timeb = 10;
 	var timec = 100;
