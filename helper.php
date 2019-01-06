@@ -232,11 +232,10 @@ function unarchivePlayer($uid){
 }
 
 function gametime($game){
-	$conn = mysql_connect('localhost', 'root', '');
-	mysql_select_db('maxi');
+	$conn = new mysqli('localhost', 'root', '',maxi);
 	$sql = "SELECT time FROM dynamicrp where game='$game'";
-	$retval = mysql_query( $sql, $conn );
-	$row = mysql_fetch_array($retval);
+	$retval = $conn->query( $sql );
+	$row = mysqli_fetch_assoc($retval);
       return $row['time'];
 }
 
