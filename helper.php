@@ -36,6 +36,7 @@ function addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$Reads
 	$data[7]=["child",$AccompaniedChild];
 	$data[8]=["newspaper",$ReadsHindiNP];
 	$data[9]=["internet",$internet];
+	$data[10]=["Time",$time];
 
 	$returnID=addGameCondition(getdbconnection(),"dynamicrp",$data);
 	if(!is_numeric($returnID)){
@@ -225,6 +226,14 @@ function unarchivePlayer($uid){
 	return okJSONResponse("Success");
 }
 
+function gametime($game){
+	$conn = mysql_connect('localhost', 'root', '');
+	mysql_select_db('maxi');
+	$sql = "SELECT time FROM dynamicrp where game='$game'";
+	$retval = mysql_query( $sql, $conn );
+	$row = mysql_fetch_array($retval);
+      return $row['time'];
+}
 
 function gameQueue($game){
 	$data[0]=["played",0];

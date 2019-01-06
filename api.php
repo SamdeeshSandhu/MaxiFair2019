@@ -43,11 +43,12 @@ if($action == "new"){
 	$AccompaniedChild=$_GET["AccompaniedChild"];
 	$education=$_GET["education"];
 	$internet=$_GET["internet"];
+	$time=$_GET["Time"];
 
 	if(empty($game) || empty($sec) || empty($marital) || empty($gender) || empty($age) || empty($education)){
 		echo badJSONResponse("Bad arguments");
 	}else{
-			echo addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet);
+			echo addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet,$time);
 		}
 		
 }else if($action == "getConditions"){
@@ -100,6 +101,13 @@ if($action == "new"){
 		 echo badJSONResponse("Bad arguments");
 	}else{		
 		echo gameQueue($game);
+	}
+}else if($action == "gametime"){
+	$game=$_GET["game"];
+	if(empty($game)){
+		 echo badJSONResponse("Bad arguments");
+	}else{		
+		echo gametime($game);
 	}
 }else if($action == "viewuid"){
 	$uid=$_GET["uid"];

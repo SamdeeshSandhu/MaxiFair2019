@@ -170,18 +170,31 @@ function getQueueLength(tentNum){
 
 function initializeFields(){
 	// average time for games
-	var timea = 10;
+	
+	var timea="http://"+ip+"/api.php?action=gametime&game=a";
+	fetch(timea,{mode: 'cors'});
+	var timeb="http://"+ip+"/api.php?action=gametime&game=b";
+	fetch(timeb,{mode: 'cors'});
+	var timec="http://"+ip+"/api.php?action=gametime&game=c";
+	fetch(timec,{mode: 'cors'});
+	var timed="http://"+ip+"/api.php?action=gametime&game=d";
+	fetch(timed,{mode: 'cors'});
+	var timee="http://"+ip+"/api.php?action=gametime&game=e";
+	fetch(timee,{mode: 'cors'});
+	var timef="http://"+ip+"/api.php?action=gametime&game=f";
+	fetch(timef,{mode: 'cors'});
+	/*var timea = 10;
 	var timeb = 10;
 	var timec = 100;
 	var timed = 10;
 	var timee = 10;
-	var timef = 10;
+	var timef = 10;*/
 	
     var url = "http://"+ip+"/api.php?action=gamequeue&game=a";
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tenta").innerHTML = JSONdata.data.length*timea
+                    document.getElementById("tenta").innerHTML = JSONdata.data.length*timea;
 					console.log("tenta");
                     console.log(JSONdata);
                     }).catch(function() {
