@@ -220,7 +220,14 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
---Add field time in table dynamicrp
+-- Add field time in table dynamicrp
 ALTER TABLE `dynamicrp` ADD `time` INT(10) NOT NULL DEFAULT '10' AFTER `internet`;
---done
+-- done
+
+ALTER TABLE `gamea` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gameb` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gamec` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gamed` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gamee` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gamef` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 

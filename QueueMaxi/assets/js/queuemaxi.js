@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.20.89"
+var ip="172.16.2.44"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -94,7 +94,7 @@ function addParticipant(){
                         gameAlt = gameAlt.toLowerCase();
                         var queueLength = [];
                         for (var i = 0, len = gameAlt.length; i < len; i++) {
-                            queueLength.push(Number(document.getElementById("tent"+gameAlt.charAt(i)).innerHTML));
+                            queueLength.push(Number(document.getElementById("tent"+gameAlt.charAt(i)+"current").innerHTML));
                         }
 						console.log("queueLength");
 						console.log(queueLength);
@@ -171,7 +171,7 @@ function getQueueLength(tentNum){
 function initializeFields(){
 	// average time for games
 	
-	var url="http://"+ip+"/api.php?action=gametime&game=a";
+	/*var url="http://"+ip+"/api.php?action=gametime&game=a";
 	fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
@@ -212,13 +212,13 @@ function initializeFields(){
                     }).then(function(JSONdata) {
 					timef = JSONdata.data;
 					});
-					
-	/*var timea = 10;
+	*/				
+	var timea = 10;
 	var timeb = 10;
 	var timec = 100;
 	var timed = 10;
 	var timee = 10;
-	var timef = 10;*/
+	var timef = 10;
 	
     var url = "http://"+ip+"/api.php?action=gamequeue&game=a";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -231,6 +231,18 @@ function initializeFields(){
                     document.getElementById("tenta").innerHTML = "Error";
                     console.log("ERROR");
                     });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=a";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentacurrent").innerHTML = JSONdata.data.length*timea;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentacurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=b";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -242,6 +254,18 @@ function initializeFields(){
                     document.getElementById("tentb").innerHTML = "Error";
                     console.log("ERROR");
                     });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=b";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentbcurrent").innerHTML = JSONdata.data.length*timeb;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentbcurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=c";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -253,6 +277,18 @@ function initializeFields(){
                     document.getElementById("tentc").innerHTML = "Error";
                     console.log("ERROR");
                     });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=c";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentccurrent").innerHTML = JSONdata.data.length*timec;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentccurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=d";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -264,6 +300,18 @@ function initializeFields(){
                     document.getElementById("tentd").innerHTML = "Error";
                     console.log("ERROR");
                     });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=d";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentdcurrent").innerHTML = JSONdata.data.length*timed;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentdcurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=e";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -275,6 +323,18 @@ function initializeFields(){
                     document.getElementById("tente").innerHTML = "Error";
                     console.log("ERROR");
                     });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=e";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentecurrent").innerHTML = JSONdata.data.length*timee;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentecurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=f";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -285,7 +345,19 @@ function initializeFields(){
                     }).catch(function() {
                     document.getElementById("tentf").innerHTML = "Error";
                     console.log("ERROR");
-                    });				
+                    });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=f";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentfcurrent").innerHTML = JSONdata.data.length*timef;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentfcurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});				
 					
 	
 					
@@ -308,6 +380,25 @@ function initializeFields(){
                     document.getElementById("tentauid").innerHTML = "Error";
                     console.log("ERROR UID Printing");
                     });
+	    var url = "http://"+ip+"/api.php?action=currentgamequeue&game=a";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    var UIDs="";
+                    for(var i=0;i<JSONdata.data.length;i++){
+                        //console.log("played"+JSONdata.data[i].played)
+                        if(JSONdata.data[i].queued==1){
+                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+                            //console.log("uid"+UIDs);
+                        }
+                    }
+                    document.getElementById("tentacurrentuid").innerHTML = UIDs;
+					
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentacurrentuid").innerHTML = "Error";
+                    console.log("ERROR UID Printing");
+                    });
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=b";
                     fetch(url,{mode: 'cors'}).then(function(response) {
@@ -327,6 +418,26 @@ function initializeFields(){
                     document.getElementById("tentbuid").innerHTML = "Error";
                     console.log("ERROR UID Printing");
                     });
+	    var url = "http://"+ip+"/api.php?action=currentgamequeue&game=b";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    var UIDs="";
+                    for(var i=0;i<JSONdata.data.length;i++){
+                        //console.log("played"+JSONdata.data[i].played)
+                        if(JSONdata.data[i].queued==1){
+                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+                            //console.log("uid"+UIDs);
+                        }
+                    }
+                    document.getElementById("tentbcurrentuid").innerHTML = UIDs;
+					
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentbcurrentuid").innerHTML = "Error";
+                    console.log("ERROR UID Printing");
+                    });
+					
 
     var url = "http://"+ip+"/api.php?action=gamequeue&game=c";
                     fetch(url,{mode: 'cors'}).then(function(response) {

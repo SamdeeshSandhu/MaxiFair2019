@@ -113,6 +113,11 @@ function updatePlayed($UID,$newplayed){
 	if(!is_numeric($temp)){
 		return badJSONResponse($temp);
 	}
+	$data[0]=["queued",0];
+	$temp=updatedb(getdbconnection(),"game".$newplayed,$data,$conditions);
+	if(!is_numeric($temp)){
+		return badJSONResponse($temp);
+	}
 	return okJSONResponse("Success");
 }
 
@@ -237,6 +242,11 @@ function gametime($game){
 
 function gameQueue($game){
 	$data[0]=["played",0];
+	return okJSONResponse(json_decode(viewdb(getdbconnection(),"game".$game,$data,null)));
+}
+
+function currentGameQueue($game){
+	$data[0]=["queued",1];
 	return okJSONResponse(json_decode(viewdb(getdbconnection(),"game".$game,$data,null)));
 }
 

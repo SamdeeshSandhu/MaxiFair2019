@@ -102,6 +102,13 @@ if($action == "new"){
 	}else{		
 		echo gameQueue($game);
 	}
+}else if($action == "currentgamequeue"){
+	$game=$_GET["game"];
+	if(empty($game)){
+		 echo badJSONResponse("Bad arguments");
+	}else{		
+		echo currentGameQueue($game);
+	}
 }else if($action == "gametime"){
 	$game=$_GET["game"];
 	if(empty($game)){
