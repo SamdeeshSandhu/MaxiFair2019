@@ -61,6 +61,14 @@ if($action == "new"){
 	}else{
 		echo updatePlayed($uid,$game);
 	}
+}else if($action == "currentqueue"){
+	$uid=$_GET["uid"];
+	$game=$_GET["game"];
+	if(empty($uid) || empty($game)){
+		echo badJSONResponse("Bad arguments");
+	}else{
+		echo updatecurrent($uid,$game);
+	}	
 }else if($action == "updateallocated"){
 	$uid=$_GET["uid"];
 	$games=$_GET["games"];

@@ -1,4 +1,4 @@
-var ip="172.16.2.44";
+var ip="172.16.5.239";
 var gameAllocatedGlobal = "O";
 /* Sample ajax query template that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";

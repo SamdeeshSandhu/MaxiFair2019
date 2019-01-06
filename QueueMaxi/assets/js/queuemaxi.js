@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="172.16.2.44"
+var ip="172.16.5.239"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -102,12 +102,28 @@ function addParticipant(){
 						console.log("index");
 						console.log(index);
                         window.alert(" First game: "+(gameAlt.charAt(index)).toUpperCase());
+						addtocurrentqueue(uid,gameAlt.charAt(index));
                     }
                     window.location.reload();
                 }
             });
 		}
 	});
+}
+
+function addtocurrentqueue(uid,game){ 
+//	window.alert(" Hi from current queue");
+	var url = "http://"+ip+"/api.php?action=currentqueue&uid="+uid+"&game="+game;
+    console.log("currentqueue: "+url);
+                         $.ajax({
+                            url: url,
+                            error: function(xhr, status, error){
+                                console.log("action=currentqueue&uid failed with status " + status);
+                            },
+                            success: function(data){
+                              console.log(JSON.stringify(data,null,4));
+                            }
+						 });
 }
 
 function unarchive(){

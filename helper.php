@@ -121,6 +121,16 @@ function updatePlayed($UID,$newplayed){
 	return okJSONResponse("Success");
 }
 
+function updateCurrent($UID,$game){
+	$data[0]=["queued",1];
+	$conditions[0]=["UID",$UID];
+	$temp=updatedb(getdbconnection(),"game".$game,$data,$conditions);
+	if(!is_numeric($temp)){
+		return badJSONResponse($temp);
+	}
+	return okJSONResponse("Success");
+}
+
 function updateAllocated($UID,$games){
 	$conditions[0]=["UID",$UID];
 	$data=array();
