@@ -211,15 +211,117 @@ function initializeFields(){
                     return response.json();
                     }).then(function(JSONdata) {
 					timef = JSONdata.data;
-					});
-	*/				
+					});				
 	var timea = 10;
 	var timeb = 10;
 	var timec = 100;
 	var timed = 10;
 	var timee = 10;
 	var timef = 10;
+	*/
+	var timea = 0;
+	var timeb = 0;
+	var timec = 0;
+	var timed = 0;
+	var timee = 0;
+	var timef = 0;
 	
+	timeA();
+	var url="api.php?action=gametime&game=a";
+	function fetchTimeA(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timea = text;
+				_callback();
+			});
+		});
+	}
+	function timeA(){
+		fetchTimeA(function(){
+			timea=Number(timea);
+			});
+	}
+	
+	timeB();
+	var url="api.php?action=gametime&game=b";
+	function fetchTimeB(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timeb = text;
+				_callback();
+			});
+		});
+	}
+	function timeB(){
+		fetchTimeB(function(){
+			timeb=Number(timeb);
+			});
+	}
+	
+	timeC();
+	var url="api.php?action=gametime&game=c";
+	function fetchTimeC(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timec = text;
+				_callback();
+			});
+		});
+	}
+	function timeC(){
+		fetchTimeC(function(){
+			timec=Number(timec);
+			});
+	}
+	
+	timeD();
+	var url="api.php?action=gametime&game=d";
+	function fetchTimeD(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timed = text;
+				_callback();
+			});
+		});
+	}
+	function timeD(){
+		fetchTimeD(function(){
+			timed=Number(timed);
+			});
+	}
+	
+	timeE();
+	var url="api.php?action=gametime&game=e";
+	function fetchTimeE(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timee = text;
+				_callback();
+			});
+		});
+	}
+	function timeE(){
+		fetchTimeE(function(){
+			timee=Number(timee);
+			});
+	}
+	
+	timeF();
+	var url="api.php?action=gametime&game=f";
+	function fetchTimeF(_callback){
+		fetch(url).then(function(response) {
+			return response.text().then(function(text) {
+				timef = text;
+				_callback();
+			});
+		});
+	}
+	function timeF(){
+		fetchTimeF(function(){
+			timef=Number(timef);
+			});
+	}
+		
     var url = "http://"+ip+"/api.php?action=gamequeue&game=a";
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
