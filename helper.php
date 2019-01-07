@@ -87,6 +87,7 @@ function addEntry($uid,$name,$sec,$games_allocated,$phno,$email,$profile,$json){
 	return okJSONResponse("Success");
 	
 }
+
 //update game
 //remove
 //archive

@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="172.16.5.239"
+var ip="10.10.21.178"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -37,6 +37,7 @@ var uid = document.getElementById("uid").value;
                     if(gameslist.includes(gamePlayed)){
                         
                         var url = "http://"+ip+"/api.php?action=updategame&uid="+uid+"&game="+gamePlayed;
+						//window.alert(gamePlayed);
                         console.log("remove: "+url);
                          $.ajax({
                             url: url,
@@ -51,11 +52,61 @@ var uid = document.getElementById("uid").value;
                 }    
             })(i);
             }
-        window.location.reload();
+			nextbestgame(uid);
+			window.location.reload();
 		}
 	});
+	
 }
-
+function nextbestgame(uid){
+	var url = "http://"+ip+"/api.php?action=viewuid&uid="+uid;
+	$.ajax({
+		url: url,
+		error: function(xhr, status, error){
+			console.log("action=viewuid&uid= Failed with status " + status);
+		},
+		success: function(data){
+			var JSONdata = JSON.parse(data);
+            var gameAlt = JSONdata.data[0].games_allocated;
+			//window.alert("Alloted games: "+gameAlt);
+			var AgameAlt = gameAlt.split("");
+			AgameAlt = AgameAlt.sort();
+			AgameAlt = AgameAlt.join('');
+			//window.alert(": "+ AgameAlt);
+			var gamePlayed = JSONdata.data[0].games_played;
+			var AgamePlayed = gamePlayed.split("");
+			AgamePlayed = AgamePlayed.sort();
+			AgamePlayed = AgamePlayed.join('');
+			window.alert("Played games: "+ AgamePlayed);
+			var gamesLeft = AgameAlt.replace(AgamePlayed,"");
+			window.alert("Games Left "+ gamesLeft);
+            //window.alert("Games Left length: "+ gamesLeft.length);
+			console.log("gamesLeftlength");
+			console.log(gamesLeft.length);
+			if(gamesLeft.length == 0)
+			{
+				window.alert("Ok Bye");
+			}
+			else
+			{
+				
+				gamesLeft = gamesLeft.toLowerCase();
+				var queueLength = [];
+                for (var i = 0, len = gamesLeft.length; i < len; i++) {
+                     queueLength.push(Number(document.getElementById("tent"+gamesLeft.charAt(i)+"current").innerHTML));
+                }	
+				console.log("queueLength");
+				console.log(queueLength);
+				window.alert(queueLength);
+                var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
+				console.log("index");
+				console.log(index);
+				window.alert(" Next game: "+(gamesLeft.charAt(index)).toUpperCase());
+				addtocurrentqueue(uid,gamesLeft.charAt(index));
+			}
+		}
+	});   
+}
 function addParticipant(){
     var uid = document.getElementById("uidB").value;
     var url = "http://"+ip+"/api.php?action=viewuid1&uid="+uid;
@@ -76,7 +127,7 @@ function addParticipant(){
             var profile = JSONdata.data[0].profile
             var json = JSONdata.data[0].json
 
-            //not sure about the this alternative implementaion, please check if this is equivalent
+            
             var url = "http://"+ip+"/api.php?action=addparticipant&uid="+uid+"&name="+name+"&sec="+sec+"&games_allocated="+gameAlt+"&phno="+phn+"&email="+email+"&profile="+profile+"&json="+json;
             $.ajax({
                 url: url,
