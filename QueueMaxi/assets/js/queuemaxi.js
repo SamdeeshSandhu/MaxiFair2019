@@ -286,7 +286,8 @@ function initializeFields(){
                     }).then(function(JSONdata) {
                     document.getElementById("tentb").innerHTML = JSONdata.data.length*timeb;
 					console.log("tentb");
-                    console.log(JSONdata);                    }).catch(function() {
+                    console.log(JSONdata);                    
+					}).catch(function() {
                     document.getElementById("tentb").innerHTML = "Error";
                     console.log("ERROR");
                     });
@@ -405,11 +406,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentauid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentauid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
@@ -424,7 +427,7 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-							var x = document.getElementById("tentccurrentuid");
+							var x = document.getElementById("tentacurrentuid");
 							var option = document.createElement("option");
 							option.text = JSONdata.data[i].UID;
 							x.add(option);
@@ -446,11 +449,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentbuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentbuid").innerHTML = UIDs;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentbuid").innerHTML = "Error";
@@ -464,7 +469,7 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-							var x = document.getElementById("tentccurrentuid");
+							var x = document.getElementById("tentbcurrentuid");
 							var option = document.createElement("option");
 							option.text = JSONdata.data[i].UID;
 							x.add(option);
@@ -487,11 +492,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentcuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentcuid").innerHTML = UIDs;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentcuid").innerHTML = "Error";
@@ -526,11 +533,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentduid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentduid").innerHTML = UIDs;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentduid").innerHTML = "Error";
@@ -544,7 +553,7 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-							var x = document.getElementById("tentccurrentuid");
+							var x = document.getElementById("tentdcurrentuid");
 							var option = document.createElement("option");
 							option.text = JSONdata.data[i].UID;
 							x.add(option);
@@ -566,11 +575,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tenteuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tenteuid").innerHTML = UIDs;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tenteuid").innerHTML = "Error";
@@ -584,7 +595,7 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-							var x = document.getElementById("tentccurrentuid");
+							var x = document.getElementById("tentecurrentuid");
 							var option = document.createElement("option");
 							option.text = JSONdata.data[i].UID;
 							x.add(option);
@@ -606,11 +617,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].played==0){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentfuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentfuid").innerHTML = UIDs;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentfuid").innerHTML = "Error";
@@ -624,7 +637,7 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-							var x = document.getElementById("tentccurrentuid");
+							var x = document.getElementById("tentfcurrentuid");
 							var option = document.createElement("option");
 							option.text = JSONdata.data[i].UID;
 							x.add(option);
