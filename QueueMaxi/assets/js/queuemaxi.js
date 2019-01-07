@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.21.178"
+var ip="10.10.20.89"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -59,6 +59,7 @@ var uid = document.getElementById("uid").value;
 	
 }
 function nextbestgame(uid){
+	window.alert("Allocating next best game");
 	var url = "http://"+ip+"/api.php?action=viewuid&uid="+uid;
 	$.ajax({
 		url: url,
@@ -77,9 +78,9 @@ function nextbestgame(uid){
 			var AgamePlayed = gamePlayed.split("");
 			AgamePlayed = AgamePlayed.sort();
 			AgamePlayed = AgamePlayed.join('');
-			window.alert("Played games: "+ AgamePlayed);
+			//window.alert("Played games: "+ AgamePlayed);
 			var gamesLeft = AgameAlt.replace(AgamePlayed,"");
-			window.alert("Games Left "+ gamesLeft);
+			//window.alert("Games Left "+ gamesLeft);
             //window.alert("Games Left length: "+ gamesLeft.length);
 			console.log("gamesLeftlength");
 			console.log(gamesLeft.length);
@@ -89,7 +90,6 @@ function nextbestgame(uid){
 			}
 			else
 			{
-				
 				gamesLeft = gamesLeft.toLowerCase();
 				var queueLength = [];
                 for (var i = 0, len = gamesLeft.length; i < len; i++) {
@@ -97,7 +97,7 @@ function nextbestgame(uid){
                 }	
 				console.log("queueLength");
 				console.log(queueLength);
-				window.alert(queueLength);
+				//window.alert(queueLength);
                 var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
 				console.log("index");
 				console.log(index);

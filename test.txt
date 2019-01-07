@@ -1,1 +1,1 @@
-UPDATE gameC SET queued = '0',last_update = '2019-01-08 00:17:09' WHERE UID = 1 
+UPDATE gamec SET queued = '1' WHERE UID = 30 
