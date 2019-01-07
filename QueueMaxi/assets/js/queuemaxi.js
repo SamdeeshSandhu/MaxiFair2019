@@ -424,11 +424,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentccurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentacurrentuid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
@@ -462,11 +464,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentccurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentbcurrentuid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
@@ -540,11 +544,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentccurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentdcurrentuid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
@@ -578,11 +584,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentccurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentecurrentuid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
@@ -616,11 +624,13 @@ function initializeFields(){
                     for(var i=0;i<JSONdata.data.length;i++){
                         //console.log("played"+JSONdata.data[i].played)
                         if(JSONdata.data[i].queued==1){
-                            UIDs=UIDs + JSONdata.data[i].UID + ", ";
+							var x = document.getElementById("tentccurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
                             //console.log("uid"+UIDs);
                         }
                     }
-                    document.getElementById("tentfcurrentuid").innerHTML = UIDs;
 					
                     //console.log(JSONdata);
                     }).catch(function() {
