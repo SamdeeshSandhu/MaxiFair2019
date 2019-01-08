@@ -231,3 +231,6 @@ ALTER TABLE `gamed` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`;
 ALTER TABLE `gamee` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gamef` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 
+ALTER TABLE  `dynamicrp` ADD  `min_age` INT NOT NULL AFTER  `age` , ADD  `max_age` INT NOT NULL AFTER  `min_age`;
+ALTER TABLE  `dynamicrp` DROP  `age`;
+
