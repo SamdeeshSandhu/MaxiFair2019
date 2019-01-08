@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.20.89"
+var ip="10.10.21.178"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;

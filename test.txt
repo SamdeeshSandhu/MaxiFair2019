@@ -1,1 +1,0 @@
-UPDATE gamec SET queued = '1' WHERE UID = 30 

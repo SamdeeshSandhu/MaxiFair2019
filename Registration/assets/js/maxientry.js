@@ -1,4 +1,4 @@
-var ip="10.10.20.89";
+var ip="10.10.21.178";
 var gameAllocatedGlobal = "O";
 /* Sample ajax query template that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
@@ -168,22 +168,22 @@ function changeCondition(){
     gender = "11";
     }
 
-    var CanDrive="";
-    if (document.getElementById("CanDrive").checked) {
-    CanDrive = "1";
-    console.log(CanDrive);
+    var Juice="";
+    if (document.getElementById("Juice").checked) {
+    Juice = "1";
+    console.log(Juice);
     }
     else
     {
-    	CanDrive = "0";
+    	Juice = "0";
     }
-    var AccompaniedChild="";
-    if (document.getElementById("AccompaniedChild").checked) {
-    AccompaniedChild = "1";
+    var Dryer="";
+    if (document.getElementById("Dryer").checked) {
+    Dryer = "1";
     }
     else
     {
-    	AccompaniedChild = "0";
+    	Dryer = "0";
     }
     var ReadsHindiNP="";
     if (document.getElementById("ReadsHindiNP").checked) {
@@ -204,7 +204,7 @@ function changeCondition(){
     
     var education = document.getElementById("education")[document.getElementById("education").selectedIndex].value;
 
-    var url = "http://"+ip+"/api.php?action=addDynamic&game="+game+"&sec="+sec+"&marital="+marital+"&gender="+gender+"&age="+age+"&education="+education+"&CanDrive="+CanDrive+"&AccompaniedChild="+AccompaniedChild+"&ReadsHindiNP="+ReadsHindiNP+"&internet="+internet;
+    var url = "http://"+ip+"/api.php?action=addDynamic&game="+game+"&sec="+sec+"&marital="+marital+"&gender="+gender+"&age="+age+"&education="+education+"&Juice="+Juice+"&Dryer="+Dryer+"&ReadsHindiNP="+ReadsHindiNP+"&internet="+internet;
     console.log(url);
 
 	$.ajax({
@@ -228,7 +228,7 @@ function getGame(){
 	if (region == "Others")
 	{region = document.getElementById("otherstext").value;}
 		
-	var age = document.getElementById("age")[document.getElementById("age").selectedIndex].value;
+	var age = document.getElementById("age").value;
 	
 	var gender;
 	if (document.getElementById("male").checked) {
@@ -254,22 +254,22 @@ function getGame(){
     	education = document.getElementById("nonGraduate").value;
     }
 
-    var CanDrive="";
-    if (document.getElementById("CanDrive").checked) {
-    CanDrive = "Yes";
-    console.log(CanDrive);
+    var Juice="";
+    if (document.getElementById("Juice").checked) {
+    Juice = "Yes";
+    console.log(Juice);
     }
     else
     {
-    	CanDrive = "NO";
+    	Juice = "NO";
     }
-    var AccompaniedChild="";
-    if (document.getElementById("AccompaniedChild").checked) {
-    AccompaniedChild = "Yes";
+    var Dryer="";
+    if (document.getElementById("Dryer").checked) {
+    Dryer = "Yes";
     }
     else
     {
-    	AccompaniedChild = "No";
+    	Dryer = "No";
     }
     var ReadsHindiNP="";
     if (document.getElementById("ReadHindiNP").checked) {
@@ -305,26 +305,17 @@ function getGame(){
   	if(marital=="Single") maritalbit="10";
   	else maritalbit="01";
 
-  	if(CanDrive=="Yes") drivebit="1";
-  	else drivebit="0";
+  	if(Juice=="Yes") juicebit="1";
+  	else juicebit="0";
 
-  	if(AccompaniedChild=="Yes") accompaniedChildbit="1";
-  	else accompaniedChildbit="0";
+  	if(Dryer=="Yes") dryerbit="1";
+  	else dryerbit="0";
 
   	if(ReadsHindiNP=="Yes") newspaperbit="1";
   	else newspaperbit="0";
 
   	if(internet=="Yes") internetbit="1";
   	else internetbit="0";
-
-  	if (age == "less than 18") agebit="10000000";
-  	else if (age == "18 to 24 years") agebit = "01000000"
-  	else if (age == "25 to 34 years") agebit = "00100000";
-  	else if (age == "35 to 44 years") agebit = "00010000";
-  	else if (age == "45 to 54 years") agebit = "00001000";
-  	else if (age == "55 to 64 years") agebit = "00000100";
-  	else if (age == "65 to 74 years") agebit = "00000010";
-  	else agebit = "00000001"; 
 
   	var url = "http://"+ip+"/api.php?action=getConditions";
   	$.ajax({
@@ -340,15 +331,15 @@ function getGame(){
 			for (var i=0; i<Object.keys(JSONdata.data).length; i++) {
 				var flag = 1;
 
-				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].age,2) & parseInt(agebit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
+				//if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
+				if((JSONdata.data[i].min_age > age) || (JSONdata.data[i].max_age < age)){ flag = 0;}
+				/*if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].education,2) & parseInt(educationbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].drive,2) == 1) & drivebit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].child,2) == 1) & accompaniedChildbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].drive,2) == 1) & juicebit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].child,2) == 1) & dryerbit == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].newspaper,2) == 1) & newspaperbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}*/
 				if(flag==1){gameAllocated += (JSONdata.data[i].game).charAt(0);}
 			}
 			if(gameAllocated == ""){gameAllocated = "O"}
@@ -396,22 +387,22 @@ function insert(){
     	education = document.getElementById("nonGraduate").value;
     }
 
-    var CanDrive="";
-    if (document.getElementById("CanDrive").checked) {
-    CanDrive = "Yes";
-    console.log(CanDrive);
+    var Juice="";
+    if (document.getElementById("Juice").checked) {
+    Juice = "Yes";
+    console.log(Juice);
     }
     else
     {
-    	CanDrive = "NO";
+    	Juice = "NO";
     }
-    var AccompaniedChild="";
-    if (document.getElementById("AccompaniedChild").checked) {
-    AccompaniedChild = "Yes";
+    var Dryer="";
+    if (document.getElementById("Dryer").checked) {
+    Dryer = "Yes";
     }
     else
     {
-    	AccompaniedChild = "No";
+    	Dryer = "No";
     }
     var ReadsHindiNP="";
     if (document.getElementById("ReadHindiNP").checked) {
@@ -491,8 +482,8 @@ function insert(){
 	objJson.gender = gender;
 	objJson.marital = marital;
 	objJson.education = education;
-	objJson.canDrive = CanDrive;
-	objJson.accompaniedbyChildBelow15 = AccompaniedChild;
+	objJson.Juice = Juice;
+	objJson.accompaniedbyChildBelow15 = Dryer;
 	objJson.readsHindiNewspaper = ReadsHindiNP;
 	objJson.hasInternet = internet;
 	objJson.ElectricityConnection = ElectricityConnection;
