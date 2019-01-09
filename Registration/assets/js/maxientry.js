@@ -331,15 +331,15 @@ function getGame(){
 			for (var i=0; i<Object.keys(JSONdata.data).length; i++) {
 				var flag = 1;
 
-				//if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
 				if((JSONdata.data[i].min_age > age) || (JSONdata.data[i].max_age < age)){ flag = 0;}
-				/*if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].education,2) & parseInt(educationbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].drive,2) == 1) & juicebit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].child,2) == 1) & dryerbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].juice,2) == 1) & juicebit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].dryer,2) == 1) & dryerbit == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].newspaper,2) == 1) & newspaperbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}*/
+				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}
 				if(flag==1){gameAllocated += (JSONdata.data[i].game).charAt(0);}
 			}
 			if(gameAllocated == ""){gameAllocated = "O"}
@@ -361,7 +361,7 @@ function insert(){
 	if (region == "Others")
 	{region = document.getElementById("otherstext").value;}
 		
-	var age = document.getElementById("age")[document.getElementById("age").selectedIndex].value;
+	var age = document.getElementById("age").value;
 	
 	var gender;
 	if (document.getElementById("male").checked) {

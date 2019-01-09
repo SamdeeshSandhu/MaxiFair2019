@@ -233,4 +233,5 @@ ALTER TABLE `gamef` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`;
 
 ALTER TABLE  `dynamicrp` ADD  `min_age` INT NOT NULL AFTER  `age` , ADD  `max_age` INT NOT NULL AFTER  `min_age`;
 ALTER TABLE  `dynamicrp` DROP  `age`;
+ALTER TABLE `dynamicrp` CHANGE `drive` `juice` INT(11) NULL DEFAULT NULL, CHANGE `child` `dryer` INT(11) NULL DEFAULT NULL;
 
