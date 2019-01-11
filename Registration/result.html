@@ -35,7 +35,7 @@
     <main>
 
 <Script>
-	var ip="10.10.26.48:80";
+	var ip="10.10.21.178:80";
 var arrArgs = location.search.substring(1).split("&");
 
 var index = arrArgs[0].indexOf("=");  // Gets the first index where a space occours
@@ -54,7 +54,10 @@ var url = "http://"+ip+"/api.php?action=viewregistrations&filter=[[\"name\",\""+
 			console.log(JSON.stringify(JSONdata));
 			document.getElementById("Name").innerHTML = "Name: " + JSONdata.data[0].name;
 			document.getElementById("id").innerHTML = "UID: " + JSONdata.data[0].UID;
-			document.getElementById("gamesalc").innerHTML = "Games Allocated: "+ JSONdata.data[0].games_allocated;
+			var gameAllocated;
+			gameAllocated = JSONdata.data[0].games_allocated.replace("F", "F");
+			gameAllocated = JSONdata.data[0].games_allocated.replace("G", "F");
+			document.getElementById("gamesalc").innerHTML = "Games Allocated: "+ gameAllocated;
 			document.getElementById("ph").innerHTML = "Phone No: "+ JSONdata.data[0].phno;
 			
 		}).catch(function(){
