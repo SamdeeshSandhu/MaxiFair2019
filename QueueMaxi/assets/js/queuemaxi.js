@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.21.178"
+var ip="172.16.7.169"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -23,7 +23,9 @@ var uid = document.getElementById("uid").value;
 			console.log("action=viewuid&uid= failed with status " + status + " " + error) ;
 		},
 		success: function(data){
+			var flag = 0;
 			var JSONdata = JSON.parse(data);
+			JSONdatatoparse = JSONdata;
 			console.log("games allocated "+JSONdata.data[0].games_allocated);
             var gameslist = JSONdata.data[0].games_allocated;
             var checklist = document.getElementsByClassName("game");
@@ -34,79 +36,74 @@ var uid = document.getElementById("uid").value;
                 if(checklist[i].checked == true) {
                     console.log(checklist[i].value.trim());
                     var gamePlayed = checklist[i].value;
-                    if(gameslist.includes(gamePlayed)){
-                        
+                    if(gameslist.includes(gamePlayed))
+					{
+						lastgame = gamePlayed;
                         var url = "http://"+ip+"/api.php?action=updategame&uid="+uid+"&game="+gamePlayed;
-						//window.alert(gamePlayed);
                         console.log("remove: "+url);
                          $.ajax({
                             url: url,
-                            error: function(xhr, status, error){
+                            error: function(xhr, status, error)
+							{
                                 console.log("action=updategame&uid failed with status " + status);
                             },
-                            success: function(data){
+                            success: function(data)
+							{
                               console.log(JSON.stringify(data,null,4));
+							  var JSONdata = JSONdatatoparse ;
+							  console.log("Logging:");
+							  console.log(JSONdata);
+							  var gameAlt = JSONdata.data[0].games_allocated;
+								//window.alert("Alloted games: "+gameAlt);
+								var AgameAlt = gameAlt.split("");
+								AgameAlt = AgameAlt.sort();
+								AgameAlt = AgameAlt.join('');
+								//window.alert(": "+ AgameAlt);
+								var gamePlayed = JSONdata.data[0].games_played ;
+								if(gamePlayed == null)
+								{
+									gamePlayed = lastgame;
+								}
+								else
+								{
+									gamePlayed = gamePlayed + lastgame;
+								}	
+								var AgamePlayed = gamePlayed.split("");
+								AgamePlayed = AgamePlayed.sort();
+								AgamePlayed = AgamePlayed.join('');
+								//window.alert("Played games: "+ AgamePlayed);
+								var gamesLeft = AgameAlt.replace(AgamePlayed,"");
+								if(gamesLeft.length == 0)
+								{
+									alert("Ok Bye");
+								}
+								else
+								{
+									gamesLeft = gamesLeft.toLowerCase();
+									var queueLength = [];
+									for (var i = 0, len = gamesLeft.length; i < len; i++) {
+										 queueLength.push(Number(document.getElementById("tent"+gamesLeft.charAt(i)+"current").innerHTML));
+									}	
+									console.log("queueLength");
+									console.log(queueLength);
+									//window.alert(queueLength);
+									var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
+									console.log("index");
+									console.log(index);
+									window.alert(" Next game: "+(gamesLeft.charAt(index)).toUpperCase());
+									addtocurrentqueue(uid,gamesLeft.charAt(index));
+								}
+								window.location.reload();
                             }
-                        });         
+                        });
                     }   
                 }    
             })(i);
             }
-			nextbestgame(uid);
-			window.location.reload();
 		}
 	});
-	
 }
-function nextbestgame(uid){
-	window.alert("Allocating next best game");
-	var url = "http://"+ip+"/api.php?action=viewuid&uid="+uid;
-	$.ajax({
-		url: url,
-		error: function(xhr, status, error){
-			console.log("action=viewuid&uid= Failed with status " + status);
-		},
-		success: function(data){
-			var JSONdata = JSON.parse(data);
-            var gameAlt = JSONdata.data[0].games_allocated;
-			//window.alert("Alloted games: "+gameAlt);
-			var AgameAlt = gameAlt.split("");
-			AgameAlt = AgameAlt.sort();
-			AgameAlt = AgameAlt.join('');
-			//window.alert(": "+ AgameAlt);
-			var gamePlayed = JSONdata.data[0].games_played;
-			var AgamePlayed = gamePlayed.split("");
-			AgamePlayed = AgamePlayed.sort();
-			AgamePlayed = AgamePlayed.join('');
-			//window.alert("Played games: "+ AgamePlayed);
-			var gamesLeft = AgameAlt.replace(AgamePlayed,"");
-			//window.alert("Games Left "+ gamesLeft);
-            //window.alert("Games Left length: "+ gamesLeft.length);
-			console.log("gamesLeftlength");
-			console.log(gamesLeft.length);
-			if(gamesLeft.length == 0)
-			{
-				window.alert("Ok Bye");
-			}
-			else
-			{
-				gamesLeft = gamesLeft.toLowerCase();
-				var queueLength = [];
-                for (var i = 0, len = gamesLeft.length; i < len; i++) {
-                     queueLength.push(Number(document.getElementById("tent"+gamesLeft.charAt(i)+"current").innerHTML));
-                }	
-				console.log("queueLength");
-				console.log(queueLength);
-				//window.alert(queueLength);
-                var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
-				console.log("index");
-				console.log(index);
-				window.alert(" Next game: "+(gamesLeft.charAt(index)).toUpperCase());
-				addtocurrentqueue(uid,gamesLeft.charAt(index));
-			}
-		}
-	});   
-}
+
 function addParticipant(){
     var uid = document.getElementById("uidB").value;
     var url = "http://"+ip+"/api.php?action=viewuid1&uid="+uid;
