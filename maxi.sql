@@ -39,22 +39,22 @@ CREATE TABLE IF NOT EXISTS `archive` (
 --
 -- Table structure for table `dynamicrp`
 --
-
-DROP TABLE IF EXISTS `dynamicrp`;
-CREATE TABLE IF NOT EXISTS `dynamicrp` (
+CREATE TABLE `dynamicrp` (
   `game` varchar(2) NOT NULL,
-  `sec` varchar(3) NOT NULL,
+  `sec` varchar(4) NOT NULL,
   `marital` varchar(2) NOT NULL,
   `gender` varchar(2) NOT NULL,
-  `age` varchar(8) NOT NULL,
+  `min_age` int(11) NOT NULL,
+  `max_age` int(11) NOT NULL,
   `education` varchar(2) NOT NULL,
-  `drive` int(11) DEFAULT NULL,
-  `child` int(11) DEFAULT NULL,
+  `juice` int(11) DEFAULT NULL,
+  `dryer` int(11) DEFAULT NULL,
   `newspaper` int(11) DEFAULT NULL,
   `internet` int(11) DEFAULT NULL,
-  UNIQUE KEY `game` (`game`)
+  `car` int(11) NOT NULL,
+  `phone` int(11) NOT NULL,
+  `time` int(10) NOT NULL DEFAULT '10'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
 
 -- --------------------------------------------------------
 
@@ -221,9 +221,7 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
--- Add field time in table dynamicrp
-ALTER TABLE `dynamicrp` ADD `time` INT(10) NOT NULL DEFAULT '10' AFTER `internet`;
--- done
+
 
 ALTER TABLE `gamea` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gameb` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
@@ -233,9 +231,7 @@ ALTER TABLE `gamee1` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`;
 ALTER TABLE `gamee2` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gamef` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 
-ALTER TABLE  `dynamicrp` ADD  `min_age` INT NOT NULL AFTER  `age` , ADD  `max_age` INT NOT NULL AFTER  `min_age`;
-ALTER TABLE  `dynamicrp` DROP  `age`;
-ALTER TABLE `dynamicrp` CHANGE `drive` `juice` INT(11) NULL DEFAULT NULL, CHANGE `child` `dryer` INT(11) NULL DEFAULT NULL;
+
 
 --
 -- Dumping data for table `dynamicrp`
