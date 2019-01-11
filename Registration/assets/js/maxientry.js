@@ -1,4 +1,4 @@
-var ip="172.16.7.169";
+var ip="10.10.26.48";
 var gameAllocatedGlobal = "O";
 /* Sample ajax query template that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
@@ -108,6 +108,7 @@ function get_sec()
 	{
 		if (item <= 3) {sec = "C";}
 		else if (item <= 5) {sec = "B";}
+		else if (item <= 9) {sec = "B1";}
 		else {sec = "A";}
 		console.log(sec);
 	}
@@ -115,6 +116,7 @@ function get_sec()
 	{
 		if (item <= 4) {sec = "C";}
 		else if (item == 5) {sec = "B";}
+		else if (item <= 9) {sec = "B1";}
 		else {sec = "A";}
 		
 	}
@@ -292,9 +294,10 @@ function getGame(){
 	console.log("SEC: "+sec);
 	var gameAllocated = "";
 	var secbit = ""
-	if(sec=="A") secbit="100";
-  	else if(sec=="B") secbit="010";
-  	else secbit="001";
+	if(sec=="A") secbit="1000";
+	else if(sec=="B1") secbit="0100";
+  	else if(sec=="B") secbit="0010";
+  	else secbit="0001";
 
   	if(gender=="Male") genderbit="10";
   	else genderbit="01";
@@ -346,7 +349,9 @@ function getGame(){
 			gameAllocated=gameAllocated.toUpperCase();
 			console.log("game allocated: "+ gameAllocated);
 			gameAllocatedGlobal = gameAllocated;
-  			document.getElementById('gameAllocatedLabel').innerHTML = gameAllocatedGlobal;
+			gameAllocated = gameAllocated.replace("F", "F");
+			gameAllocated = gameAllocated.replace("G", "F");
+  			document.getElementById('gameAllocatedLabel').innerHTML = gameAllocated;
   			document.getElementById("Submit").disabled = false; 
 		}
 		});

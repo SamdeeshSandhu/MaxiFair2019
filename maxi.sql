@@ -122,11 +122,23 @@ CREATE TABLE IF NOT EXISTS `gamed` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gamee`
+-- Table structure for table `gamee1`
 --
 
-DROP TABLE IF EXISTS `gamee`;
-CREATE TABLE IF NOT EXISTS `gamee` (
+DROP TABLE IF EXISTS `gamee1`;
+CREATE TABLE IF NOT EXISTS `gamee1` (
+  `UID` int(11) NOT NULL,
+  `played` tinyint(1) NOT NULL DEFAULT '0',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+--
+-- Table structure for table `gamee2``
+--
+
+DROP TABLE IF EXISTS `gamee2`;
+CREATE TABLE IF NOT EXISTS `gamee2`` (
   `UID` int(11) NOT NULL,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -228,7 +240,8 @@ ALTER TABLE `gamea` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`;
 ALTER TABLE `gameb` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gamec` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gamed` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
-ALTER TABLE `gamee` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
+ALTER TABLE `gamee1` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`;
+ALTER TABLE `gamee2` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 ALTER TABLE `gamef` ADD `queued` INT(1) NOT NULL DEFAULT '0' AFTER `played`; 
 
 ALTER TABLE  `dynamicrp` ADD  `min_age` INT NOT NULL AFTER  `age` , ADD  `max_age` INT NOT NULL AFTER  `min_age`;

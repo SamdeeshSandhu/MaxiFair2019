@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="172.16.7.169"
+var ip="10.10.26.48"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -90,7 +90,10 @@ var uid = document.getElementById("uid").value;
 									var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
 									console.log("index");
 									console.log(index);
-									window.alert(" Next game: "+(gamesLeft.charAt(index)).toUpperCase());
+									var gameAllocated =(gamesLeft.charAt(index)).toUpperCase();
+									gameAllocated = gameAllocated.replace("F", "F1");
+									gameAllocated = gameAllocated.replace("G", "F2");
+									window.alert(" Next game: "+(gameAllocated));
 									addtocurrentqueue(uid,gamesLeft.charAt(index));
 								}
 								window.location.reload();
@@ -149,7 +152,10 @@ function addParticipant(){
                         var index = queueLength.reduce((iMin, x, i, arr) => x < arr[iMin] ? i : iMin, 0);
 						console.log("index");
 						console.log(index);
-                        window.alert(" First game: "+(gameAlt.charAt(index)).toUpperCase());
+						var gameAllocated =(gameAlt.charAt(index)).toUpperCase();
+						gameAllocated = gameAllocated.replace("F", "F1");
+						gameAllocated = gameAllocated.replace("G", "F2");
+                        window.alert(" First game: "+(gameAllocated));
 						addtocurrentqueue(uid,gameAlt.charAt(index));
                     }
                     window.location.reload();
@@ -289,7 +295,7 @@ function initializeFields(){
 	}
 	
 	function fetchTimeF(){
-		var url="http://"+ip+"/api.php?action=gametime&game=f";
+		var url="http://"+ip+"/api.php?action=gametime&game=g";
 		fetch(url).then(function(response) {
 			return response.text().then(function(text) {
 				timef = text;
@@ -421,11 +427,12 @@ function initializeFields(){
 					console.log("ERROR");
 					});
 
+
     var url = "http://"+ip+"/api.php?action=gamequeue&game=f";
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
                     }).then(function(JSONdata) {
-                    document.getElementById("tentf").innerHTML = JSONdata.data.length*timef;
+                    document.getElementById("tentf").innerHTML = JSONdata.data.length*timee;
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentf").innerHTML = "Error";
@@ -436,11 +443,34 @@ function initializeFields(){
 					fetch(url,{mode: 'cors'}).then(function(response) {
 					return response.json();
 					}).then(function(JSONdata) {
-					document.getElementById("tentfcurrent").innerHTML = JSONdata.data.length*timef;
+					document.getElementById("tentfcurrent").innerHTML = JSONdata.data.length*timee;
 					console.log("tenta");
 					console.log(JSONdata);
 					}).catch(function() {
 					document.getElementById("tentfcurrent").innerHTML = "Error";
+					console.log("ERROR");
+					});
+
+    var url = "http://"+ip+"/api.php?action=gamequeue&game=g";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    document.getElementById("tentg").innerHTML = JSONdata.data.length*timef;
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentg").innerHTML = "Error";
+                    console.log("ERROR");
+                    });
+					
+	var url = "http://"+ip+"/api.php?action=currentgamequeue&game=g";
+					fetch(url,{mode: 'cors'}).then(function(response) {
+					return response.json();
+					}).then(function(JSONdata) {
+					document.getElementById("tentgcurrent").innerHTML = JSONdata.data.length*timef;
+					console.log("tenta");
+					console.log(JSONdata);
+					}).catch(function() {
+					document.getElementById("tentgcurrent").innerHTML = "Error";
 					console.log("ERROR");
 					});				
 					
@@ -657,6 +687,7 @@ function initializeFields(){
                     console.log("ERROR UID Printing");
                     });
 
+
     var url = "http://"+ip+"/api.php?action=gamequeue&game=f";
                     fetch(url,{mode: 'cors'}).then(function(response) {
                     return response.json();
@@ -696,6 +727,48 @@ function initializeFields(){
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentfcurrentuid").innerHTML = "Error";
+                    console.log("ERROR UID Printing");
+                    });
+
+    var url = "http://"+ip+"/api.php?action=gamequeue&game=g";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    var UIDs="";
+                    for(var i=0;i<JSONdata.data.length;i++){
+                        //console.log("played"+JSONdata.data[i].played)
+                        if(JSONdata.data[i].played==0){
+							var x = document.getElementById("tentguid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
+                            //console.log("uid"+UIDs);
+                        }
+                    }
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentguid").innerHTML = "Error";
+                    console.log("ERROR UID Printing");
+                    });
+	    var url = "http://"+ip+"/api.php?action=currentgamequeue&game=g";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    var UIDs="";
+                    for(var i=0;i<JSONdata.data.length;i++){
+                        //console.log("played"+JSONdata.data[i].played)
+                        if(JSONdata.data[i].queued==1){
+							var x = document.getElementById("tentgcurrentuid");
+							var option = document.createElement("option");
+							option.text = JSONdata.data[i].UID;
+							x.add(option);
+                            //console.log("uid"+UIDs);
+                        }
+                    }
+					
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentgcurrentuid").innerHTML = "Error";
                     console.log("ERROR UID Printing");
                     });
 
@@ -764,6 +837,17 @@ function initializeFields(){
                     //console.log(JSONdata);
                     }).catch(function() {
                     document.getElementById("tentftotal").innerHTML = "Error";
+                    console.log("ERROR");
+                    });
+
+    var url = "http://"+ip+"/api.php?action=viewplayed&game=g";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    document.getElementById("tentgtotal").innerHTML = JSONdata.data.length;
+                    //console.log(JSONdata);
+                    }).catch(function() {
+                    document.getElementById("tentgtotal").innerHTML = "Error";
                     console.log("ERROR");
                     });
 
