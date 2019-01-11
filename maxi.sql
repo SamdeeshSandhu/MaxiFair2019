@@ -55,17 +55,6 @@ CREATE TABLE IF NOT EXISTS `dynamicrp` (
   UNIQUE KEY `game` (`game`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `dynamicrp`
---
-
-INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `age`, `education`, `drive`, `child`, `newspaper`, `internet`) VALUES
-('d', '011', '01', '01', '01111111', '11', 0, 0, 0, 0),
-('c', '111', '11', '11', '00111111', '11', 0, 0, 1, 1),
-('b', '111', '11', '11', '01110000', '11', 1, 0, 0, 0),
-('a', '111', '01', '11', '00111000', '11', 0, 0, 0, 0),
-('e', '001', '11', '11', '01111000', '11', 0, 0, 0, 0),
-('f', '110', '01', '01', '01110000', '11', 0, 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -248,3 +237,16 @@ ALTER TABLE  `dynamicrp` ADD  `min_age` INT NOT NULL AFTER  `age` , ADD  `max_ag
 ALTER TABLE  `dynamicrp` DROP  `age`;
 ALTER TABLE `dynamicrp` CHANGE `drive` `juice` INT(11) NULL DEFAULT NULL, CHANGE `child` `dryer` INT(11) NULL DEFAULT NULL;
 
+--
+-- Dumping data for table `dynamicrp`
+--
+
+INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `education`, `juice`, `dryer`, `newspaper`, `internet`, `car`, `phone`, `time`) VALUES
+('a', '1111', '11', '11', 16, 35, '11', 1, 0, 0, 0, 0, 0, 10),
+('b', '1110', '11', '01', 23, 45, '11', 0, 0, 0, 0, 0, 0, 20),
+('c', '1110', '11', '01', 18, 99, '11', 0, 0, 0, 0, 0, 0, 20),
+('d', '1110', '11', '01', 18, 99, '11', 0, 0, 0, 0, 0, 0, 20),
+('e', '1100', '11', '11', 20, 40, '11', 0, 0, 0, 0, 1, 1, 15),
+('f', '1110', '11', '10', 18, 35, '11', 0, 1, 1, 1, 0, 0, 16),
+('g', '1110', '11', '01', 18, 35, '11', 0, 1, 1, 1, 0, 0, 16);
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
