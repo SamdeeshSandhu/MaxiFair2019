@@ -195,6 +195,22 @@ function changeCondition(){
     {
     	ReadsHindiNP = "0";
     }
+    var Car="";
+    if (document.getElementById("Car").checked) {
+    Car = "1";
+    }
+    else
+    {
+    	Car = "0";
+    }
+    var Phone="";
+    if (document.getElementById("Phone").checked) {
+    Phone = "1";
+    }
+    else
+    {
+    	Phone = "0";
+    }
     var hasChild="";
     if (document.getElementById("hasChild").checked) {
     hasChild = "1";
@@ -281,6 +297,22 @@ function getGame(){
     {
     	ReadsHindiNP = "No";
     }
+    var Car="";
+    if (document.getElementById("Car").checked) {
+    Car = "Yes";
+    }
+    else
+    {
+    	Car = "No";
+    }
+    var Phone="";
+    if (document.getElementById("Phone").checked) {
+    Phone = "Yes";
+    }
+    else
+    {
+    	Phone = "No";
+    }
     var internet="";
     if (document.getElementById("internet").checked) {
     internet = "Yes";
@@ -317,6 +349,12 @@ function getGame(){
   	if(ReadsHindiNP=="Yes") newspaperbit="1";
   	else newspaperbit="0";
 
+  	if(Car=="Yes") carbit="1";
+  	else carbit="0";
+
+  	if(Phone=="Yes") phonebit="1";
+  	else phonebit="0";
+
   	if(internet=="Yes") internetbit="1";
   	else internetbit="0";
 
@@ -343,6 +381,8 @@ function getGame(){
 				if((parseInt(JSONdata.data[i].dryer,2) == 1) & dryerbit == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].newspaper,2) == 1) & newspaperbit == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].car,2) == 1) & carbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].phone,2) == 1) & phonebit == 0){ flag = 0;}
 				if(flag==1){gameAllocated += (JSONdata.data[i].game).charAt(0);}
 			}
 			if(gameAllocated == ""){gameAllocated = "O"}

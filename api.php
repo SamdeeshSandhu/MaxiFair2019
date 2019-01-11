@@ -43,12 +43,14 @@ if($action == "new"){
 	$AccompaniedChild=$_GET["AccompaniedChild"];
 	$education=$_GET["education"];
 	$internet=$_GET["internet"];
+	$car=$_GET["car"];
+	$phone=$_GET["phone"];
 	$time=$_GET["Time"];
 
 	if(empty($game) || empty($sec) || empty($marital) || empty($gender) || empty($age) || empty($education)){
 		echo badJSONResponse("Bad arguments");
 	}else{
-			echo addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet,$time);
+			echo addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet,$car,$phone,$time);
 		}
 		
 }else if($action == "getConditions"){
