@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
 include ('helper.php');
 if(!isset($_GET["action"])){

@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: *'); ?>
 <?php
 error_reporting(E_ERROR | E_PARSE);
 include ('auth.php');
