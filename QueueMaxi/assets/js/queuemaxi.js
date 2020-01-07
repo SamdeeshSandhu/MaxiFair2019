@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="10.10.26.165"
+var ip="localhost/MaxiFair2019"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;

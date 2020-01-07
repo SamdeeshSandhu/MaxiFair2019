@@ -1,4 +1,4 @@
-var ip="10.10.26.165;
+var ip="localhost/MaxiFair2019";
 var gameAllocatedGlobal = "O";
 /* Sample ajax query template that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
@@ -196,7 +196,7 @@ function changeCondition(){
     	ReadsHindiNP = "0";
     }
     var Car="";
-    if (document.getElementById("Car").checked) {
+/*    if (document.getElementById("Car").checked) {
     Car = "1";
     }
     else
@@ -218,7 +218,7 @@ function changeCondition(){
     else
     {
     	hasChild = "0";
-    }
+    }*/
     
     var education = document.getElementById("education")[document.getElementById("education").selectedIndex].value;
 
