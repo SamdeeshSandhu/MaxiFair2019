@@ -37,6 +37,8 @@
 					<th>Current Queue Time</th>
 					<th id="current">Current UIDs</th>
                     <th id="upcoming">Upcoming UIDs</th>
+                    <th>Tent Status</th>
+                    <th>Tent Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,6 +49,8 @@
 					<td id="tentacurrent"></td>
 					<td><select id="tentacurrentuid"><option>Current UIDs in Tent A</option></select></td>
                     <td><select id="tentauid"><option>Upcoming UIDs in Tent A</option></select></td>
+                    <td id="gameaStatus"></td>
+                     <td> <input type="button" id="buttona" value = "STOP" style= "background:red" onclick="changeTentStatus('buttona')";/> </td>
                 </tr>
                 <tr>
                     <td>Tent #B</td>
@@ -55,6 +59,8 @@
 					<td id="tentbcurrent"></td>
 					<td><select id="tentbcurrentuid"><option>Current UIDs in Tent B</option></select></td>
                     <td><select id="tentbuid"><option>Upcoming UIDs in Tent B</option></select></td>
+                    <td id="gamebStatus"></td>
+                    <td> <input type="button" id="buttonb" value = "STOP" style= "background:red" onclick="changeTentStatus('buttonb')";/> </td>
                 </tr>
                 <tr>
                     <td>Tent #C</td>
@@ -63,6 +69,8 @@
 					<td id="tentccurrent"></td>
 					<td><select id="tentccurrentuid"><option>Current UIDs in Tent C</option></select></td>
                     <td><select id="tentcuid"><option>Upcoming UIDs in Tent C</option></select></td>
+                    <td id="gamecStatus"></td>
+                    <td> <input type="button" id="buttonc" value = "STOP" style= "background:red" onclick="changeTentStatus('buttonc')";/> </td>
                 </tr>
                 <tr>
                     <td>Tent #D</td>
@@ -71,6 +79,8 @@
 					<td id="tentdcurrent"></td>
 					<td><select id="tentdcurrentuid"><option>Current UIDs in Tent D</option></select></td>
                     <td><select id="tentduid"><option>Upcoming UIDs in Tent D</option></select></td>
+                    <td id="gamedStatus"></td>
+                    <td> <input type="button" id="buttond" value = "STOP" style= "background:red" onclick="changeTentStatus('buttond')";/> </td>
                 </tr>
                 <tr>
                     <td>Tent #E</td>
@@ -79,6 +89,8 @@
 					<td id="tentecurrent"></td>
 					<td><select id="tentecurrentuid"><option>Current UIDs in Tent E</option></select></td>
                     <td><select id="tenteuid"><option>Upcoming UIDs in Tent E</option></select></td>
+                    <td id="gameeStatus"></td>
+                    <td> <input type="button" id="buttone" value = "STOP" style= "background:red" onclick="changeTentStatus('buttone')";/> </td>
                 </tr>
                 <tr>
                     <td>Tent #F1</td>
@@ -87,6 +99,8 @@
 					<td id="tentfcurrent"></td>
 					<td><select id="tentfcurrentuid"><option>Current UIDs in Tent F1</option></select></td>
                     <td><select id="tentfuid"><option>Upcoming UIDs in Tent F1</option></select></td>
+                    <td id="gamefStatus"></td>
+                    <td> <input type="button" id="buttonf" value = "STOP" style= "background:red" onclick="changeTentStatus('buttonf')";/> </td>
                 </tr>
                  <tr>
                     <td>Tent #F2</td>
@@ -95,6 +109,8 @@
 					<td id="tentgcurrent"></td>
 					<td><select id="tentgcurrentuid"><option>Current UIDs in Tent F2</option></select></td>
                     <td><select id="tentguid"><option>Upcoming UIDs in Tent F2</option></select></td>
+                    <td id="gamegStatus"></td>
+                    <td> <input type="button" id="buttong" value = "STOP" style= "background:red" onclick="changeTentStatus('buttong')";/> </td>
                 </tr>
                 
             </tbody>
@@ -155,6 +171,7 @@
     <!--script src="assets/js/queuemaxi.js?version=4"></script-->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

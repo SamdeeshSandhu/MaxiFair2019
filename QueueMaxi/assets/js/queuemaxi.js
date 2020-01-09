@@ -29,6 +29,7 @@ var uid = document.getElementById("uid").value;
 			console.log("games allocated "+JSONdata.data[0].games_allocated);
             var gameslist = JSONdata.data[0].games_allocated;
             var checklist = document.getElementsByClassName("game");
+            console.log(checklist);
             for(var i=0;i<checklist.length;i++){
                 (function(i){
                 //console.log(checklist[i].value.trim());
@@ -166,7 +167,7 @@ function addParticipant(){
 }
 
 function addtocurrentqueue(uid,game){ 
-//	window.alert(" Hi from current queue");
+	//window.alert(" Hi from current queue");
 	var url = "http://"+ip+"/api.php?action=currentqueue&uid="+uid+"&game="+game;
     console.log("currentqueue: "+url);
                          $.ajax({
@@ -851,7 +852,77 @@ function initializeFields(){
                     console.log("ERROR");
                     });
 
+     var url = "http://"+ip+"/api.php?action=getConditions";
+                    fetch(url,{mode: 'cors'}).then(function(response) {
+                    return response.json();
+                    }).then(function(JSONdata) {
+                    
+                   for (var i = 0, len = JSONdata.data.length; i < len; i++) {
+                   	var element = document.getElementById("button"+JSONdata.data[i].game);
+                   		if(JSONdata.data[i].isTentActive == 1){
+                            document.getElementById("game"+JSONdata.data[i].game+"Status").innerHTML = "RUNNING";
+                            
+                            element.style.backgroundColor = "#ff0000"
+            				element.value = "STOP";
+                   		}else{
+                   			document.getElementById("game"+JSONdata.data[i].game+"Status").innerHTML = "STOPPED";
+                   			element.style.backgroundColor = "#7FFF00"
+            				element.value = "START";
+                   		}
+                       }
+                    
+                    }).catch(function() {
+                    //document.getElementById("tentgtotal").innerHTML = "Error";
+                    console.log("ERROR");
+                    });
+
 }
+
+var inactiveTents = []; 
+var tentMap = new Map();
+tentMap.set("buttona","a");
+tentMap.set("buttonb","b");
+tentMap.set("buttonc","c");
+tentMap.set("buttond","d");
+tentMap.set("buttone","e");
+tentMap.set("buttonf","f");
+tentMap.set("buttong","g");
+
+function changeTentStatus(btn) {
+	
+	var answer = window.confirm("Are you sure you want to proceed?");
+	if(!answer){
+		return;
+	}
+	var property = document.getElementById(btn);
+        var tentStatus = 1;
+        var gameTent = tentMap.get(property.id);
+
+        if (property.value == "STOP") {
+            property.style.backgroundColor = "#7FFF00"
+            property.value = "START";
+            tentStatus = 0;
+            document.getElementById("game" + gameTent +"Status").innerHTML = "STOPPED";
+        }
+        else {
+            property.style.backgroundColor = "#ff0000"
+            property.value = "STOP";
+            tentStatus = 1;
+            document.getElementById("game" + gameTent +"Status").innerHTML = "RUNNING";
+        }
+
+        var url = "http://"+ip+"/api.php?action=updateTentStatus&tentStatus=" + tentStatus + "&game=" + gameTent;
+  	$.ajax({
+		url: url,
+		error: function(xhr, status, error){
+			console.log("Call to action=getConditions failed with error: ", xhr.status);
+			console.log(url);
+		},
+		success: function(JSONdata){
+			console.log(JSONdata);
+		}});
+
+    }
 
 function onloadFunctions(){
     initializeFields();
