@@ -156,8 +156,15 @@ else if($action == "viewarchive"){
 	$name=$_GET["name"];
 	$phno=$_GET["phno"];
 	echo getUID($name,$phno);
-}
-else {
+}else if($action == "updateTentStatus"){
+	$tentStatus=$_GET["tentStatus"];
+	$game=$_GET["game"];
+	if(empty($game)){
+		echo badJSONResponse("Bad arguments");
+	}else{
+		echo updateTentStatus($tentStatus,$game);
+	}	
+}else {
 	echo badJSONResponse("Bad arguments");
 }
 
