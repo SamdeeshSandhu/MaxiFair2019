@@ -470,7 +470,7 @@ function getGame(){
 			gameAllocatedGlobal = gameAllocated;
 			gameAllocated = gameAllocated.replace("F", "F");
 			gameAllocated = gameAllocated.replace("G", "F");
-  			document.getElementById('gameAllocatedLabel').innerHTML = gameAllocated;
+  			document.getElementById('gameAllocatedLabel').innerHTML = '<font size="5">'+gameAllocated+'</font>';
   			document.getElementById("Submit").disabled = false; 
 		}
 		});
