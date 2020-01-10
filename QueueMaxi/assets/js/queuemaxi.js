@@ -11,7 +11,7 @@ var url = "http://"+ip+"/api.php?action=call-to-your-api";
 		}
 	});
 */
-var ip="localhost/MaxiFair2019"
+var ip="10.10.24.16/MaxiFair2019"
 
 function remove(){ 
 var uid = document.getElementById("uid").value;
@@ -781,15 +781,17 @@ function initializeFields(){
                     return response.json();
                     }).then(function(JSONdata) {
                     
-                   for (var i = 0, len = JSONdata.data.length; i < len; i++) {
-                   	var element = document.getElementById("button"+JSONdata.data[i].game);
+                    console.log("====initialize===");
+                    console.log(JSONdata);
+                   	for (var i = 0, len = JSONdata.data.length; i < len; i++) {
+                   	var element = document.getElementById("button"+JSONdata.data[i].game.charAt(0));	
                    		if(JSONdata.data[i].isTentActive == 1){
-                            document.getElementById("game"+JSONdata.data[i].game+"Status").innerHTML = "RUNNING";
+                            document.getElementById("game"+JSONdata.data[i].game.charAt(0)+"Status").innerHTML = "RUNNING";
                             
                             element.style.backgroundColor = "#ff0000"
             				element.value = "STOP";
                    		}else{
-                   			document.getElementById("game"+JSONdata.data[i].game+"Status").innerHTML = "STOPPED";
+                   			document.getElementById("game"+JSONdata.data[i].game.charAt(0)+"Status").innerHTML = "STOPPED";
                    			element.style.backgroundColor = "#7FFF00"
             				element.value = "START";
                    		}

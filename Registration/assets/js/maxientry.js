@@ -1,4 +1,4 @@
-var ip="localhost/MaxiFair2019";
+var ip="10.10.24.16/MaxiFair2019";
 var gameAllocatedGlobal = "O";
 /* Sample ajax query template that can be used
 var url = "http://"+ip+"/api.php?action=call-to-your-api";
@@ -354,8 +354,10 @@ function getGame(){
     	AccompaniedChild = "No";
     }
 
-    var ChildAge="0";
-    ChildAge = document.getElementById("ChildAge").value;
+	var ChildAge = document.getElementById("ChildAge").value;
+    if(ChildAge == "") {
+    	ChildAge = "0";
+    }
 
 	var sec = get_sec();
 	console.log("SEC: "+sec);
@@ -459,7 +461,7 @@ function getGame(){
 				if(gender == "Female" && age >= 18 && JSONdata.data[5].isTentActive.charAt(0) == "1") {
 					gameAllocated += "E";
 				}
-				if(JSONdata.data[6].isTentActive.charAt(0) == "1") {
+				if(JSONdata.data[6].isTentActive.charAt(0) == "1" && gameAllocated.length < 2) {
 					gameAllocated += "F";
 				}
 			}
