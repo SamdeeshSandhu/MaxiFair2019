@@ -403,15 +403,33 @@ function getGame(){
 				tempGame = tempGame.toUpperCase();
 				var flag = 1;
 
-				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
-				if((JSONdata.data[i].min_age > age) || (JSONdata.data[i].max_age < age)){ flag = 0;}
-				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].juice,2) == 1) & juicebit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].pub,2) == 1) & pubbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].houseRenov,2) == 1) & renovbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].employed,2) == 1) & employedbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].accompaniedChild,2) == 1) & accompaniedchildbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0) { 
+					flag = 0;
+				}
+				if((JSONdata.data[i].min_age > age) || (JSONdata.data[i].max_age < age)) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].juice,2) == 1) & juicebit == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].pub,2) == 1) & pubbit == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].houseRenov,2) == 1) & renovbit == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].employed,2) == 1) & employedbit == 0) { 
+					flag = 0;
+				}
+				if((parseInt(JSONdata.data[i].accompaniedChild,2) == 1) & accompaniedchildbit == 0) { 
+					flag = 0;
+				}
 
 				if(tempGame.charAt(0) == "A") {
 					if(ChildAge < 5 && ChildAge > 15) {
@@ -424,8 +442,13 @@ function getGame(){
 						flag = 0;
 					}
 				}
+				if(JSONdata.data[i].isTentActive.charAt(0) == "1") {
+					flag = 0;
+				}
 
-				if(flag==1){gameAllocated += tempGame.charAt(0)}
+				if(flag==1){
+					gameAllocated += tempGame.charAt(0)
+				}
 			}
 			if(gameAllocated.length < 2) {
 				if(gender == "Female" && age >= 18) {
