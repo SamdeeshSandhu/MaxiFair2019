@@ -889,7 +889,12 @@ tentMap.set("buttonf","f");
 tentMap.set("buttong","g");
 
 function changeTentStatus(btn) {
-		var property = document.getElementById(btn);
+	
+	var answer = window.confirm("Are you sure you want to proceed?");
+	if(!answer){
+		return;
+	}
+	var property = document.getElementById(btn);
         var tentStatus = 1;
         var gameTent = tentMap.get(property.id);
 
