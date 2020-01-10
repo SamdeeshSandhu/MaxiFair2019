@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `archive` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `last_update` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -76,7 +76,7 @@ INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age
 --
 
 CREATE TABLE `gamea` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -89,7 +89,7 @@ CREATE TABLE `gamea` (
 --
 
 CREATE TABLE `gameb` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -102,7 +102,7 @@ CREATE TABLE `gameb` (
 --
 
 CREATE TABLE `gamec` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -115,7 +115,7 @@ CREATE TABLE `gamec` (
 --
 
 CREATE TABLE `gamed` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL  PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -128,7 +128,7 @@ CREATE TABLE `gamed` (
 --
 
 CREATE TABLE `gamee` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -141,7 +141,7 @@ CREATE TABLE `gamee` (
 --
 
 CREATE TABLE `gamef` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -154,7 +154,7 @@ CREATE TABLE `gamef` (
 --
 
 CREATE TABLE `gameg` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -167,7 +167,7 @@ CREATE TABLE `gameg` (
 --
 
 CREATE TABLE `gameh` (
-  `UID` int(11) NOT NULL,
+  `UID` int(11) NOT NULL PRIMARY KEY,
   `played` tinyint(1) NOT NULL DEFAULT '0',
   `queued` int(1) NOT NULL DEFAULT '0',
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
