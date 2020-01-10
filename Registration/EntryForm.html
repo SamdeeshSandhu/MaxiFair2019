@@ -32,7 +32,7 @@
 	
     <main>
 	
-	    <form <div class="form-group has-success" action = "result.html" method="get">
+	    <form div class="form-group has-success" action = "result.html" method="get">
       			
 		<div class="row">
 					<div class="col-sm-12 col-md-4">
@@ -133,22 +133,23 @@
                </label>
                </div>
 			</div>
-			
-		<div class="col-sm-12 col-md-3">	 
-              <h3>Graduate?</h3>
-			  <div class="radio">
-               <label>
-               <input type="radio" name = "education" id="graduate" value="Graduate" checked>
-               <h4>Yes</h4> 
-               </label>
-               </div>
-               <div class="radio">
-               <label width=550px >
-               <input type="radio" name = "education" id="nonGraduate" value="nonGraduate">
-               <h4>No</h4>
-               </label>
-               </div>
-			</div>
+
+      <div class="col-sm-12 col-md-3">
+                       <div class="dropdown">
+                  <h3>Education Level?</h3>
+         <select required = "true" class="form-control" id = "education">
+        
+         <option disabled selected value>Choose Education Level</option>
+                 <option value = "edu6">Graduate/PG</option>
+                 <option value = "edu5">Diploma</option>
+                 <option value = "edu4">SSC/HSC</option>
+                 <option value = "edu3">School (5 - 9 years)</option>
+                 <option value = "edu2">Literate and/or School (upto 4 years)</option>
+                 <option value = "edu1">Illiterate</option>
+
+                  </select>
+                 </div>
+       </div>
 
 			
 	    <div class="col-sm-12 col-md-3">
@@ -160,17 +161,17 @@
 	    </div>
         <table style="width:100%">
             <tr>	
-  	        <th><label class="checkbox-inline"><input type="checkbox"  id="Juice"><h4>Has consumed freshly prepared / packaged juice in the past six months?</h4></label></th>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="Dryer"><h4>Aware about hair dryers (Females) / beard trimmers (males)?  </h4></label></th>
+  	            <th><label class="checkbox-inline"><input type="checkbox"  id="Juice"><h4>Have consumed packaged fruit juice in the past six months</h4></label></th>
+                <th><label class="checkbox-inline"><input type="checkbox"  id="Pub"><h4>Prefers a pub/bar to a fine dining restaurant</h4></label></th>
             </tr>
-			<tr>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="ReadHindiNP"><h4>Reads Hindi/English?</h4></label></th>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="internet"><h4>Uses internet on smartphone or computer?</h4></label></th>
-			<tr>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="Car"><h4>Do you / your family owns a car?  </h4></label></th>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="Phone"><h4>Does your phone cost more than Rs. 8000?</h4></label></th>
-         </tr>
-     </h3></th>
+            <tr>
+                <th><label class="checkbox-inline"><input type="checkbox"  id="HouseRenov"><h4>Have witnessed a house construction/major renovation in the past 3 years</h4></label></th>
+                <th><label class="checkbox-inline"><input type="checkbox"  id="Employed"><h4>Are you currently employed (full time/part time)</h4></label></th>
+            </tr>
+      			<tr>
+                <th><label class="checkbox-inline"><input type="checkbox"  id="AccompaniedChild"><h4>Accompanied by their child</h4></label></th>
+                <th><input type="text" id="ChildAge" size="1" class="form-control" placeholder="Enter age of accompanying child"></th>
+      			</tr>
    </table>
 	<table>
      <thead>
@@ -181,16 +182,16 @@
             <th><label class="checkbox-inline"><input type="checkbox" id="ElectricityConnection" checked><h4>Electricity</h4></label></th>
           	<th><label class="checkbox-inline"><input type="checkbox" id="CeilingFan" checked><h4>Ceiling Fan</h4></label></th>
           	<th><label class="checkbox-inline"><input type="checkbox" id="LPGStove" checked><h4>LPG Stove</h4></label></th>
-          	<th><label class="checkbox-inline"><input type="checkbox" id="TwoWheeler" checked><h4>Two Wheeler</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox" id="TwoWheeler"><h4>Two Wheeler</h4></label></th>
             <th><label class="checkbox-inline"><input type="checkbox"  id="ColorTV" checked><h4>Color TV</h4></label></th>
-          	<th><label class="checkbox-inline"><input type="checkbox"  id="Refrigerator" checked><h4>Refrigerator</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox"  id="Refrigerator"><h4>Refrigerator</h4></label></th>
           	</tr>
        <tr>
-			      <th><label class="checkbox-inline"><input type="checkbox"  id="WashingMachine" checked><h4>Washing Machine</h4></label></th>
-          	<th><label class="checkbox-inline"><input type="checkbox"  id="PCLaptop" checked><h4>PC Laptop</h4></label></th>
-            <th><label class="checkbox-inline"><input type="checkbox"  id="FourWheeler" checked><h4>Four Wheeler</h4></label></th>
-           	<th><label class="checkbox-inline"><input type="checkbox"  id="AC" checked><h4>AC</h4></label></th>
-           	<th><label class="checkbox-inline"><input type="checkbox"  id="AgriculturalLand" checked><h4>Agricultural Land</h4></label></th>
+			      <th><label class="checkbox-inline"><input type="checkbox"  id="WashingMachine"><h4>Washing Machine</h4></label></th>
+          	<th><label class="checkbox-inline"><input type="checkbox"  id="PCLaptop"><h4>PC Laptop</h4></label></th>
+            <th><label class="checkbox-inline"><input type="checkbox"  id="FourWheeler"><h4>Four Wheeler</h4></label></th>
+           	<th><label class="checkbox-inline"><input type="checkbox"  id="AC"><h4>AC</h4></label></th>
+           	<th><label class="checkbox-inline"><input type="checkbox"  id="AgriculturalLand"><h4>Agricultural Land</h4></label></th>
 	       </tr>
      </th>
      </table>
