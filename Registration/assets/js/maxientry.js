@@ -316,60 +316,54 @@ function getGame(){
     var Juice="";
     if (document.getElementById("Juice").checked) {
 	    Juice = "Yes";
-	    console.log(Juice);
     }
     else
     {
     	Juice = "No";
     }
-    var Dryer="";
-    if (document.getElementById("Dryer").checked) {
-    	Dryer = "Yes";
+    var Pub="";
+    if (document.getElementById("Pub").checked) {
+    	Pub = "Yes";
     }
     else
     {
-    	Dryer = "No";
+    	Pub = "No";
     }
-    var ReadsHindiNP="";
-    if (document.getElementById("ReadHindiNP").checked) {
-    	ReadsHindiNP = "Yes";
-    }
-    else
-    {
-    	ReadsHindiNP = "No";
-    }
-    var Car="";
-    if (document.getElementById("Car").checked) {
-    	Car = "Yes";
+    var HouseRenov="";
+    if (document.getElementById("HouseRenov").checked) {
+    	HouseRenov = "Yes";
     }
     else
     {
-    	Car = "No";
+    	HouseRenov = "No";
     }
-    var Phone="";
-    if (document.getElementById("Phone").checked) {
-    Phone = "Yes";
-    }
-    else
-    {
-    	Phone = "No";
-    }
-    var internet="";
-    if (document.getElementById("internet").checked) {
-    internet = "Yes";
+    var Employed="";
+    if (document.getElementById("Employed").checked) {
+    	Employed = "Yes";
     }
     else
     {
-    	internet = "No";
+    	Employed = "No";
     }
+    var AccompaniedChild="";
+    if (document.getElementById("AccompaniedChild").checked) {
+    AccompaniedChild = "Yes";
+    }
+    else
+    {
+    	AccompaniedChild = "No";
+    }
+
+    var ChildAge="0";
+    ChildAge = document.getElementById("ChildAge").value;
 
 	var sec = get_sec();
 	console.log("SEC: "+sec);
 	var gameAllocated = "";
 	var secbit = ""
 	if(sec=="A") secbit="1000";
-	else if(sec=="B1") secbit="0100";
-  	else if(sec=="B") secbit="0010";
+	else if(sec=="B") secbit="0100";
+  	else if(sec=="C") secbit="0010";
   	else secbit="0001";
 
   	if(gender=="Male") genderbit="10";
@@ -381,20 +375,17 @@ function getGame(){
   	if(Juice=="Yes") juicebit="1";
   	else juicebit="0";
 
-  	if(Dryer=="Yes") dryerbit="1";
-  	else dryerbit="0";
+  	if(Pub=="Yes") pubbit="1";
+  	else pubbit="0";
 
-  	if(ReadsHindiNP=="Yes") newspaperbit="1";
-  	else newspaperbit="0";
+  	if(HouseRenov=="Yes") renovbit="1";
+  	else renovbit="0";
 
-  	if(Car=="Yes") carbit="1";
-  	else carbit="0";
+  	if(Employed=="Yes") employedbit="1";
+  	else employedbit="0";
 
-  	if(Phone=="Yes") phonebit="1";
-  	else phonebit="0";
-
-  	if(internet=="Yes") internetbit="1";
-  	else internetbit="0";
+  	if(AccompaniedChild=="Yes") accompaniedchildbit="1";
+  	else accompaniedchildbit="0";
 
   	var url = "http://"+ip+"/api.php?action=getConditions";
   	$.ajax({
@@ -408,6 +399,8 @@ function getGame(){
 			JSONdata = JSON.parse(JSONdata);
 			var gameAllocated = "";
 			for (var i=0; i<Object.keys(JSONdata.data).length; i++) {
+				var tempGame = JSONdata.data[i].game;
+				tempGame = tempGame.toUpperCase();
 				var flag = 1;
 
 				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
@@ -415,14 +408,33 @@ function getGame(){
 				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].juice,2) == 1) & juicebit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].dryer,2) == 1) & dryerbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].newspaper,2) == 1) & newspaperbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].internet,2) == 1) & internetbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].car,2) == 1) & carbit == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].phone,2) == 1) & phonebit == 0){ flag = 0;}
-				if(flag==1){gameAllocated += (JSONdata.data[i].game).charAt(0);}
+				if((parseInt(JSONdata.data[i].pub,2) == 1) & pubbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].houseRenov,2) == 1) & renovbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].employed,2) == 1) & employedbit == 0){ flag = 0;}
+				if((parseInt(JSONdata.data[i].accompaniedChild,2) == 1) & accompaniedchildbit == 0){ flag = 0;}
+
+				if(tempGame.charAt(0) == "A") {
+					if(ChildAge < 5 && ChildAge > 15) {
+						flag = 0;
+					}
+				}
+
+				if(tempGame.charAt(0) == "B") {
+					if(ChildAge < 6 && ChildAge > 14) {
+						flag = 0;
+					}
+				}
+
+				if(flag==1){gameAllocated += tempGame.charAt(0)}
 			}
-			if(gameAllocated == ""){gameAllocated = "O"}
+			if(gameAllocated.length < 2) {
+				if(gender == "Female" && age >= 18) {
+					gameAllocated += "EF";
+				}
+				else {
+					gameAllocated += "F";
+				}
+			}
 			gameAllocated=gameAllocated.toUpperCase();
 			console.log("game allocated: "+ gameAllocated);
 			gameAllocatedGlobal = gameAllocated;
@@ -465,37 +477,47 @@ function insert(){
 
     var Juice="";
     if (document.getElementById("Juice").checked) {
-    Juice = "Yes";
-    console.log(Juice);
+	    Juice = "Yes";
     }
     else
     {
     	Juice = "No";
     }
-    var Dryer="";
-    if (document.getElementById("Dryer").checked) {
-    Dryer = "Yes";
+    var Pub="";
+    if (document.getElementById("Pub").checked) {
+    	Pub = "Yes";
     }
     else
     {
-    	Dryer = "No";
+    	Pub = "No";
     }
-    var ReadsHindiNP="";
-    if (document.getElementById("ReadHindiNP").checked) {
-    ReadsHindiNP = "Yes";
-    }
-    else
-    {
-    	ReadsHindiNP = "No";
-    }
-    var internet="";
-    if (document.getElementById("internet").checked) {
-    internet = "Yes";
+    var HouseRenov="";
+    if (document.getElementById("HouseRenov").checked) {
+    	HouseRenov = "Yes";
     }
     else
     {
-    	internet = "No";
+    	HouseRenov = "No";
     }
+    var Employed="";
+    if (document.getElementById("Employed").checked) {
+    	Employed = "Yes";
+    }
+    else
+    {
+    	Employed = "No";
+    }
+    var AccompaniedChild="";
+    if (document.getElementById("AccompaniedChild").checked) {
+    	AccompaniedChild = "Yes";
+    }
+    else
+    {
+    	AccompaniedChild = "No";
+    }
+
+    var ChildAge="0";
+    ChildAge = document.getElementById("ChildAge").value;
 	
 	var ElectricityConnection;
 	   if (document.getElementById("ElectricityConnection").checked) {
@@ -559,9 +581,11 @@ function insert(){
 	objJson.marital = marital;
 	objJson.education = education;
 	objJson.Juice = Juice;
-	objJson.accompaniedbyChildBelow15 = Dryer;
-	objJson.readsHindiNewspaper = ReadsHindiNP;
-	objJson.hasInternet = internet;
+	objJson.Pub = Pub;
+	objJson.HouseRenov = HouseRenov;
+	objJson.Employed = Employed;
+	objJson.AccompaniedChild = AccompaniedChild;
+	objJson.ChildAge = ChildAge;
 	objJson.ElectricityConnection = ElectricityConnection;
 	objJson.CeilingFan = CeilingFan;
 	objJson.LPGStove = LPGStove;

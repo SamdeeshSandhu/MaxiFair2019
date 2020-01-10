@@ -40,19 +40,17 @@ CREATE TABLE `archive` (
 --
 
 CREATE TABLE `dynamicrp` (
-  `game` varchar(2) NOT NULL,
+  `game` varchar(2) NOT NULL PRIMARY KEY,
   `sec` varchar(4) NOT NULL,
   `marital` varchar(2) NOT NULL,
   `gender` varchar(2) NOT NULL,
   `min_age` int(11) NOT NULL,
   `max_age` int(11) NOT NULL,
-  `education` varchar(2) NOT NULL,
   `juice` int(11) DEFAULT NULL,
-  `dryer` int(11) DEFAULT NULL,
-  `newspaper` int(11) DEFAULT NULL,
-  `internet` int(11) DEFAULT NULL,
-  `car` int(11) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `pub` int(11) DEFAULT NULL,
+  `houseRenov` int(11) DEFAULT NULL,
+  `employed` int(11) DEFAULT NULL,
+  `accompaniedChild` int(11) NOT NULL,
   `time` int(10) NOT NULL DEFAULT '10',
   `isTentActive` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -61,14 +59,14 @@ CREATE TABLE `dynamicrp` (
 -- Dumping data for table `dynamicrp`
 --
 
-INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `education`, `juice`, `dryer`, `newspaper`, `internet`, `car`, `phone`, `time`) VALUES
-('d', '1110', '11', '01', 18, 99, '11', 0, 0, 0, 0, 0, 0, 20),
-('b', '1110', '11', '01', 23, 45, '11', 0, 0, 0, 0, 0, 0, 20),
-('e', '1100', '11', '11', 20, 40, '11', 0, 0, 0, 0, 1, 1, 15),
-('a', '1111', '11', '11', 16, 35, '11', 1, 0, 0, 0, 0, 0, 10),
-('f', '1110', '11', '10', 18, 35, '11', 0, 1, 1, 1, 0, 0, 16),
-('c', '1110', '11', '01', 18, 99, '11', 0, 0, 0, 0, 0, 0, 20),
-('g', '1110', '11', '01', 18, 35, '11', 0, 1, 1, 1, 0, 0, 16);
+INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `juice`, `pub`, `houseRenov`, `employed`, `accompaniedChild`, `time`, 'isTentActive') VALUES
+('a1', '1110', '11', '01', 25, 50, 1, 0, 0, 0, 0, 10, 1),
+('a2', '1110', '11', '01', 18, 99, 1, 0, 0, 0, 1, 10, 1),
+('b', '1110', '11', '01', 18, 99, 0, 0, 0, 0, 1, 10, 1),
+('c', '1100', '11', '10', 25, 40, 0, 0, 0, 0, 0, 14, 1),
+('d', '0100', '11', '10', 25, 35, 0, 1, 0, 1, 0, 10, 1),
+('e', '1110', '11', '01', 18, 99, 1, 1, 1, 1, 1, 10, 1),
+('f', '1110', '11', '11', 18, 99, 1, 1, 1, 1, 1, 10, 1);
 
 -- --------------------------------------------------------
 
