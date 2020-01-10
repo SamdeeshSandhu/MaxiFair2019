@@ -335,6 +335,10 @@ class response{
 
 function updateTentStatus($tentStatus,$game){
 	$data[0]=["isTentActive",$tentStatus];
+	if($game == "a") {
+		$temp=updaterp(getdbconnection(),"dynamicrp",$data,"a1");
+		$temp=updaterp(getdbconnection(),"dynamicrp",$data,"a2");
+	}
 	$temp=updaterp(getdbconnection(),"dynamicrp",$data,$game);
 		if(!is_numeric($temp)){
 			return badJSONResponse("Update Failed");
