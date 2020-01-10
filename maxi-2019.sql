@@ -53,7 +53,8 @@ CREATE TABLE `dynamicrp` (
   `internet` int(11) DEFAULT NULL,
   `car` int(11) NOT NULL,
   `phone` int(11) NOT NULL,
-  `time` int(10) NOT NULL DEFAULT '10'
+  `time` int(10) NOT NULL DEFAULT '10',
+  `isTentActive` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
