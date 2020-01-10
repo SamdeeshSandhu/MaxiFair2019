@@ -91,34 +91,83 @@ function searchName(name){
 function get_sec()
 {
 	var item = 0;
-	    if (document.getElementById("ElectricityConnection").checked) { item = item+1;}
-      	if (document.getElementById("CeilingFan").checked) {item = item+1;}
-		if (document.getElementById("LPGStove").checked) {item = item+1;}
-		if (document.getElementById("TwoWheeler").checked) {item = item+1;}
-		if (document.getElementById("ColorTV").checked) {item = item+1;}
-		if (document.getElementById("Refrigerator").checked) {item = item+1;}
-		if (document.getElementById("WashingMachine").checked) {item = item+1;}
-		if (document.getElementById("PCLaptop").checked) {item = item+1;}
-		if (document.getElementById("FourWheeler").checked) {item = item+1;}
-		if (document.getElementById("AC").checked) {item = item+1;}
-		if (document.getElementById("AgriculturalLand").checked){item = item+1;}
-		var sec;
+    if (document.getElementById("ElectricityConnection").checked) { item = item+1;}
+  	if (document.getElementById("CeilingFan").checked) {item = item+1;}
+	if (document.getElementById("LPGStove").checked) {item = item+1;}
+	if (document.getElementById("TwoWheeler").checked) {item = item+1;}
+	if (document.getElementById("ColorTV").checked) {item = item+1;}
+	if (document.getElementById("Refrigerator").checked) {item = item+1;}
+	if (document.getElementById("WashingMachine").checked) {item = item+1;}
+	if (document.getElementById("PCLaptop").checked) {item = item+1;}
+	if (document.getElementById("FourWheeler").checked) {item = item+1;}
+	if (document.getElementById("AC").checked) {item = item+1;}
+	if (document.getElementById("AgriculturalLand").checked){item = item+1;}
 
-	if (document.getElementById("graduate").checked)
+	var sec;
+	var education = document.getElementById("education")[document.getElementById("education").selectedIndex].value;
+
+	if (item >= 9)
 	{
-		if (item <= 3) {sec = "C";}
-		else if (item <= 5) {sec = "B";}
-		else if (item <= 9) {sec = "B1";}
-		else {sec = "A";}
+		if (education == "edu6") {sec = "A";}
+		else if (education == "edu5") {sec = "A";}
+		else if (education == "edu4") {sec = "A";}
+		else if (education == "edu2") {sec = "A";}
+		else if (education == "edu3") {sec = "A";}
+		else {sec = "B";}
 		console.log(sec);
 	}
-	else
+	else if (item == 8)
 	{
-		if (item <= 4) {sec = "C";}
-		else if (item == 5) {sec = "B";}
-		else if (item <= 9) {sec = "B1";}
-		else {sec = "A";}
-		
+		if (education == "edu6") {sec = "A";}
+		else if (education == "edu5") {sec = "A";}
+		else if (education == "edu4") {sec = "A";}
+		else if (education == "edu2") {sec = "A";}
+		else if (education == "edu3") {sec = "A";}
+		else {sec = "B";}
+		console.log(sec);
+	}
+	else if (item == 7)
+	{
+		if (education == "edu6") {sec = "A";}
+		else if (education == "edu5") {sec = "A";}
+		else if (education == "edu4") {sec = "A";}
+		else if (education == "edu2") {sec = "B";}
+		else if (education == "edu3") {sec = "B";}
+		else {sec = "C";}
+		console.log(sec);
+	}
+	else if (item == 6)
+	{
+		if (education == "edu6") {sec = "A";}
+		else if (education == "edu5") {sec = "A";}
+		else if (education == "edu4") {sec = "B";}
+		else if (education == "edu2") {sec = "B";}
+		else if (education == "edu3") {sec = "B";}
+		else {sec = "C";}
+		console.log(sec);
+	}
+	else if (item == 5)
+	{
+		if (education == "edu6") {sec = "B";}
+		else if (education == "edu5") {sec = "B";}
+		else if (education == "edu4") {sec = "B";}
+		else if (education == "edu2") {sec = "C";}
+		else if (education == "edu3") {sec = "C";}
+		else {sec = "C";}
+		console.log(sec);
+	}
+	else if (item == 4)
+	{
+		if (education == "edu6") {sec = "B";}
+		else if (education == "edu5") {sec = "C";}
+		else if (education == "edu4") {sec = "C";}
+		else if (education == "edu2") {sec = "C";}
+		else if (education == "edu3") {sec = "C";}
+		else {sec = "X";}
+		console.log(sec);
+	}
+	else {
+		sec = "X";
 	}
 	console.log(sec);
 	return sec;
@@ -139,9 +188,9 @@ function changeCondition(){
 	}
 
     var age = ""; 
-	var inputElements = document.getElementsByClassName('AgeRange');
+	var inputElements = document.getElementsByClassName('agerange');
 	for(var i=0; inputElements[i]; ++i){
-      if(inputElements[i].checked){
+      if(inputElements[i]){
         age += "1";
       }else{
       	age += "0";
@@ -160,14 +209,14 @@ function changeCondition(){
     }
 
     var gender="";
-		if (document.getElementById("male").checked) {
-    gender = document.getElementById("male").value;
+	if (document.getElementById("male").checked) {
+    	gender = document.getElementById("male").value;
     }
 	if (document.getElementById("female").checked) {
-    gender = document.getElementById("female").value;
+    	gender = document.getElementById("female").value;
     }
     else {
-    gender = "11";
+    	gender = "11";
     }
 
     var Juice="";
@@ -195,8 +244,8 @@ function changeCondition(){
     {
     	ReadsHindiNP = "0";
     }
-    var Car="";
-/*    if (document.getElementById("Car").checked) {
+/*    var Car="";
+    if (document.getElementById("Car").checked) {
     Car = "1";
     }
     else
@@ -222,7 +271,7 @@ function changeCondition(){
     
     var education = document.getElementById("education")[document.getElementById("education").selectedIndex].value;
 
-    var url = "http://"+ip+"/api.php?action=addDynamic&game="+game+"&sec="+sec+"&marital="+marital+"&gender="+gender+"&age="+age+"&education="+education+"&Juice="+Juice+"&Dryer="+Dryer+"&ReadsHindiNP="+ReadsHindiNP+"&internet="+internet;
+    var url = "http://"+ip+"/api.php?action=addDynamic&game="+game+"&sec="+sec+"&marital="+marital+"&gender="+gender+"&age="+age+"&education="+education+"&Juice="+Juice+"&Dryer="+Dryer+"&ReadsHindiNP="+ReadsHindiNP+"&internet=1";
     console.log(url);
 
 	$.ajax({
@@ -263,27 +312,19 @@ function getGame(){
 	if (document.getElementById("married").checked) {
     	marital = document.getElementById("married").value;
     }
-	
-	var education;
-	if (document.getElementById("graduate").checked) {
-    	education = document.getElementById("graduate").value;
-    }
-	if (document.getElementById("nonGraduate").checked) {
-    	education = document.getElementById("nonGraduate").value;
-    }
 
     var Juice="";
     if (document.getElementById("Juice").checked) {
-    Juice = "Yes";
-    console.log(Juice);
+	    Juice = "Yes";
+	    console.log(Juice);
     }
     else
     {
-    	Juice = "NO";
+    	Juice = "No";
     }
     var Dryer="";
     if (document.getElementById("Dryer").checked) {
-    Dryer = "Yes";
+    	Dryer = "Yes";
     }
     else
     {
@@ -291,7 +332,7 @@ function getGame(){
     }
     var ReadsHindiNP="";
     if (document.getElementById("ReadHindiNP").checked) {
-    ReadsHindiNP = "Yes";
+    	ReadsHindiNP = "Yes";
     }
     else
     {
@@ -299,7 +340,7 @@ function getGame(){
     }
     var Car="";
     if (document.getElementById("Car").checked) {
-    Car = "Yes";
+    	Car = "Yes";
     }
     else
     {
@@ -333,9 +374,6 @@ function getGame(){
 
   	if(gender=="Male") genderbit="10";
   	else genderbit="01";
-
-  	if(education=="Graduate") educationbit="10";
-  	else educationbit="01";
 
   	if(marital=="Single") maritalbit="10";
   	else maritalbit="01";
@@ -375,7 +413,6 @@ function getGame(){
 				if((parseInt(JSONdata.data[i].sec,2) & parseInt(secbit,2)).toString(10) == 0){ flag = 0;}
 				if((JSONdata.data[i].min_age > age) || (JSONdata.data[i].max_age < age)){ flag = 0;}
 				if((parseInt(JSONdata.data[i].marital,2) & parseInt(maritalbit,2)).toString(10) == 0){ flag = 0;}
-				if((parseInt(JSONdata.data[i].education,2) & parseInt(educationbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].gender,2) & parseInt(genderbit,2)).toString(10) == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].juice,2) == 1) & juicebit == 0){ flag = 0;}
 				if((parseInt(JSONdata.data[i].dryer,2) == 1) & dryerbit == 0){ flag = 0;}
@@ -424,13 +461,7 @@ function insert(){
     	marital = document.getElementById("married").value;
     }
 
-    var education;
-	if (document.getElementById("graduate").checked) {
-    	education = document.getElementById("graduate").value;
-    }
-	if (document.getElementById("nonGraduate").checked) {
-    	education = document.getElementById("nonGraduate").value;
-    }
+    var education = document.getElementById("education")[document.getElementById("education").selectedIndex].value;
 
     var Juice="";
     if (document.getElementById("Juice").checked) {
@@ -439,7 +470,7 @@ function insert(){
     }
     else
     {
-    	Juice = "NO";
+    	Juice = "No";
     }
     var Dryer="";
     if (document.getElementById("Dryer").checked) {
