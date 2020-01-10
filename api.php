@@ -38,7 +38,8 @@ if($action == "new"){
 	$sec=$_GET["sec"];
 	$marital=$_GET["marital"];
 	$gender=$_GET["gender"];
-	$age=$_GET["age"];
+	$min_age=$_GET["age"];
+	$max_age=$_GET["age"];
 	$CanDrive=$_GET["CanDrive"];
 	$ReadsHindiNP=$_GET["ReadsHindiNP"];
 	$AccompaniedChild=$_GET["AccompaniedChild"];
@@ -46,12 +47,12 @@ if($action == "new"){
 	$internet=$_GET["internet"];
 	$car=$_GET["car"];
 	$phone=$_GET["phone"];
-	$time=$_GET["Time"];
+	$time=$_GET["time"];
 
-	if(empty($game) || empty($sec) || empty($marital) || empty($gender) || empty($age) || empty($education)){
+	if(empty($game) || empty($sec) || empty($marital) || empty($gender) || empty($min_age) || empty($max_age) || empty($education)){
 		echo badJSONResponse("Bad arguments");
 	}else{
-			echo addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet,$car,$phone,$time);
+			echo addDynamic($game,$sec,$marital,$gender,$min_age,$max_age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet,$car,$phone,$time);
 		}
 		
 }else if($action == "getConditions"){
@@ -70,7 +71,7 @@ if($action == "new"){
 	if(empty($uid) || empty($game)){
 		echo badJSONResponse("Bad arguments");
 	}else{
-		echo updatecurrent($uid,$game);
+		echo updateCurrent($uid,$game);
 	}	
 }else if($action == "updateallocated"){
 	$uid=$_GET["uid"];

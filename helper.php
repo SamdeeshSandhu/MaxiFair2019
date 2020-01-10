@@ -25,19 +25,19 @@ function viewConditions(){
 	return okJSONResponse(json_decode(viewdb(getdbconnection(),"dynamicrp",null,null)));
 }
 
-function addDynamic($game,$sec,$marital,$gender,$age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet){
+function addDynamic($game,$sec,$marital,$gender,$min_age,$max_age,$education,$CanDrive,$ReadsHindiNP,$AccompaniedChild,$internet){
 	$data=array();
 	$data[0]=["game",$game];
 	$data[1]=["sec",$sec];
 	$data[2]=["marital",$marital];
 	$data[3]=["gender",$gender];
-	$data[4]=["age",$age];
-	$data[5]=["education",$education];
-	$data[6]=["drive",$CanDrive];
-	$data[7]=["child",$AccompaniedChild];
-	$data[8]=["newspaper",$ReadsHindiNP];
-	$data[9]=["internet",$internet];
-	$data[10]=["Time",$time];
+	$data[4]=["min_age",$min_age];
+	$data[5]=["max_age",$max_age];
+	$data[7]=["drive",$CanDrive];
+	$data[8]=["child",$AccompaniedChild];
+	$data[9]=["newspaper",$ReadsHindiNP];
+	$data[10]=["internet",$internet];
+	$data[11]=["Time",$time];
 
 	$returnID=addGameCondition(getdbconnection(),"dynamicrp",$data);
 	if(!is_numeric($returnID)){
