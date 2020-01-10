@@ -226,6 +226,9 @@ function unarchivePlayer($uid){
 	$data[0]=["UID",$uid];
 	$temp[0]=["UID",$uid];
 	$temp[1]=["played",0];
+	$temp[2]=["queued",1];
+	$queuedCount = 1;
+	$currentGame;
 	deleteentry(getdbconnection(),"archive",$data);
 	//Write Logic to add back to unplayed games
 	$columns=["games_allocated"];
@@ -237,10 +240,17 @@ function unarchivePlayer($uid){
 		$played=viewdb(getdbconnection(),"game".$games[$i],$data,$columns);
 		$played=json_decode($played);
 		if($played == null){
+			$currentGame = $games[$i];
+			if($queuedCount == 1){
+				$temp[2]=["queued",1];
+				$queuedCount = 0;
+			}else {
+				$temp[2]=["queued",0];
+			}
 			addtodb(getdbconnection(),"game".$games[$i],$temp);
 		}
 	}
-	return okJSONResponse("Success");
+	return okJSONResponse($currentGame);
 }
 
 function gametime($game){
