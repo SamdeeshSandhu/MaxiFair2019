@@ -432,17 +432,22 @@ function getGame(){
 				}
 
 				if(tempGame.charAt(0) == "A") {
-					if(ChildAge < 5 && ChildAge > 15) {
-						flag = 0;
+					if(gameAllocated == "") {
+						var ageTemp = parseInt(ChildAge,10);
+						if(ageTemp < 5 || ageTemp > 15) {
+							flag = 0;
+						}
 					}
+					else flag = 0;
 				}
 
 				if(tempGame.charAt(0) == "B") {
-					if(ChildAge < 6 && ChildAge > 14) {
+					var ageTemp = parseInt(ChildAge,10);
+					if(ageTemp < 6 || ageTemp > 14) {
 						flag = 0;
 					}
 				}
-				if(JSONdata.data[i].isTentActive.charAt(0) == "1") {
+				if(JSONdata.data[i].isTentActive.charAt(0) == "0") {
 					flag = 0;
 				}
 
@@ -451,10 +456,10 @@ function getGame(){
 				}
 			}
 			if(gameAllocated.length < 2) {
-				if(gender == "Female" && age >= 18) {
-					gameAllocated += "EF";
+				if(gender == "Female" && age >= 18 && JSONdata.data[5].isTentActive.charAt(0) == "1") {
+					gameAllocated += "E";
 				}
-				else {
+				if(JSONdata.data[6].isTentActive.charAt(0) == "1") {
 					gameAllocated += "F";
 				}
 			}

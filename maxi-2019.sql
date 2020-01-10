@@ -59,7 +59,7 @@ CREATE TABLE `dynamicrp` (
 -- Dumping data for table `dynamicrp`
 --
 
-INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `juice`, `pub`, `houseRenov`, `employed`, `accompaniedChild`, `time`, 'isTentActive') VALUES
+INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `juice`, `pub`, `houseRenov`, `employed`, `accompaniedChild`, `time`, `isTentActive`) VALUES
 ('a1', '1110', '11', '01', 25, 50, 1, 0, 0, 0, 0, 10, 1),
 ('a2', '1110', '11', '01', 18, 99, 1, 0, 0, 0, 1, 10, 1),
 ('b', '1110', '11', '01', 18, 99, 0, 0, 0, 0, 1, 10, 1),
