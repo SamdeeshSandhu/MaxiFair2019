@@ -50,7 +50,8 @@ CREATE TABLE `dynamicrp` (
   `pub` int(11) DEFAULT NULL,
   `houseRenov` int(11) DEFAULT NULL,
   `employed` int(11) DEFAULT NULL,
-  `accompaniedChild` int(11) NOT NULL,
+  `child515` int(11) DEFAULT NULL,
+  `accompaniedChild` int(11) DEFAULT NULL,
   `time` int(10) NOT NULL DEFAULT '10',
   `isTentActive` int(1) NOT NULL DEFAULT '1'
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -59,14 +60,14 @@ CREATE TABLE `dynamicrp` (
 -- Dumping data for table `dynamicrp`
 --
 
-INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `juice`, `pub`, `houseRenov`, `employed`, `accompaniedChild`, `time`, `isTentActive`) VALUES
-('a1', '1110', '11', '01', 25, 50, 1, 0, 0, 0, 0, 20, 1),
-('a2', '1110', '11', '01', 12, 99, 1, 0, 0, 0, 1, 20, 1),
-('b', '1110', '11', '01', 12, 99, 0, 0, 0, 0, 1, 10, 1),
-('c', '1100', '11', '10', 25, 40, 0, 0, 0, 0, 0, 14, 1),
-('d', '0100', '11', '10', 25, 35, 0, 1, 0, 1, 0, 20, 1),
-('e', '1110', '11', '01', 12, 99, 1, 1, 1, 1, 1, 10, 1),
-('f', '1110', '11', '11', 12, 99, 1, 1, 1, 1, 1, 5, 1);
+INSERT INTO `dynamicrp` (`game`, `sec`, `marital`, `gender`, `min_age`, `max_age`, `juice`, `pub`, `houseRenov`, `employed`, `child515`, `accompaniedChild`, `time`, `isTentActive`) VALUES
+('a1', '1110', '11', '01', 25, 50, 1, 0, 0, 0, 1, 0, 20, 1),
+('a2', '1110', '11', '01', 12, 99, 1, 0, 0, 0, 1, 1, 20, 1),
+('b', '1110', '11', '01', 12, 99, 0, 0, 0, 0, 0, 1, 10, 1),
+('c', '1100', '11', '10', 25, 40, 0, 0, 0, 0, 0, 0, 14, 1),
+('d', '0100', '11', '10', 25, 35, 0, 1, 0, 1, 0, 0, 20, 1),
+('e', '1110', '11', '01', 12, 99, 1, 1, 1, 1, 0, 1, 10, 1),
+('f', '1110', '11', '11', 12, 99, 1, 1, 1, 1, 0, 1, 5, 1);
 
 -- --------------------------------------------------------
 

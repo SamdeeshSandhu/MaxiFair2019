@@ -345,9 +345,17 @@ function getGame(){
     {
     	Employed = "No";
     }
+    var Child515="";
+    if (document.getElementById("Child515").checked) {
+    	Child515 = "Yes";
+    }
+    else
+    {
+    	Child515 = "No";
+    }
     var AccompaniedChild="";
     if (document.getElementById("AccompaniedChild").checked) {
-    AccompaniedChild = "Yes";
+    	AccompaniedChild = "Yes";
     }
     else
     {
@@ -385,6 +393,9 @@ function getGame(){
 
   	if(Employed=="Yes") employedbit="1";
   	else employedbit="0";
+
+  	if(Child515=="Yes") child515bit="1";
+  	else child515bit="0";
 
   	if(AccompaniedChild=="Yes") accompaniedchildbit="1";
   	else accompaniedchildbit="0";
@@ -429,12 +440,15 @@ function getGame(){
 				if((parseInt(JSONdata.data[i].employed,2) == 1) & employedbit == 0) { 
 					flag = 0;
 				}
+				if((parseInt(JSONdata.data[i].child515,2) == 1) & child515bit == 0) { 
+					flag = 0;
+				}
 				if((parseInt(JSONdata.data[i].accompaniedChild,2) == 1) & accompaniedchildbit == 0) { 
 					flag = 0;
 				}
 
-				if(tempGame.charAt(0) == "A") {
-					if(gameAllocated == "") {
+				if(tempGame == "A2") {
+					if(gameAllocated == "" && parseInt(JSONdata.data[i].accompaniedChild,2) == 1) {
 						var ageTemp = parseInt(ChildAge,10);
 						if(ageTemp < 5 || ageTemp > 15) {
 							flag = 0;
@@ -537,6 +551,14 @@ function insert(){
     {
     	Employed = "No";
     }
+    var Child515="";
+    if (document.getElementById("Child515").checked) {
+    	Child515 = "Yes";
+    }
+    else
+    {
+    	Child515 = "No";
+    }
     var AccompaniedChild="";
     if (document.getElementById("AccompaniedChild").checked) {
     	AccompaniedChild = "Yes";
@@ -614,6 +636,7 @@ function insert(){
 	objJson.Pub = Pub;
 	objJson.HouseRenov = HouseRenov;
 	objJson.Employed = Employed;
+	objJson.Child515 = Child515;
 	objJson.AccompaniedChild = AccompaniedChild;
 	objJson.ChildAge = ChildAge;
 	objJson.ElectricityConnection = ElectricityConnection;
